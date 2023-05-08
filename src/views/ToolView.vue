@@ -1,0 +1,175 @@
+<template>
+  <!--tool-->
+  <div class="container">
+    <!-- TEXT -->
+    <div class="tool">
+      <div class="text-title" style="font-size: 32px;margin-bottom: 20px;color: #038686;font-weight: bold;" >TEXT-</div>
+      <form action="" id="" method="post" target="id_iframe">
+        <div class="form-control-a">
+          <textarea class="form-control" id="text-input" name="text-input" rows="15" cols="50" required="true" v-model="text"></textarea>
+          <!-- <input class="action" type="button" id="button1" value="驗證" onclick="verify()"></input> -->
+          <div class="bottom" style="margin-top: 20px">
+            <RouterLink to="/submitText" class="action" style="width: 20%;text-align: center;" >送出</RouterLink>
+            <div class="action" style="width: 20%;text-align: center;" @click="deltext">刪除</div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- file -->
+    <div class="file" id="file" style="margin: 80px 0px;">
+      <div class="file-title" style="font-size: 32px;margin-bottom: 20px;color: #038686;font-weight: bold;">FILE-</div>
+      <div class="form-control-a">
+        <input type="file" class="form-control-file" id="text-input" name="text-input" rows="20" cols="50" required="true" multiple="multiple" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        <div class="bottom" style="margin-top: 10px">
+          <RouterLink :to="`/submitFile/1`" class="action" style="width: 20%;text-align: center;">送出</RouterLink>
+          <div class="action" style="width: 20%;text-align: center;" @click="delfile(e)">刪除</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer" id="footer">
+    <div class="footer-logo">
+      <p>精準健康研究中心-亞洲大學</p>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      text: ''
+    }
+  },
+  methods: {
+    deltext () {
+      this.text = ''
+    },
+    delfile (e) {
+      e.value = ''
+    }
+  }
+}
+</script>
+
+<style scoped>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  background-color: #fcfdfe;
+  font-family: "Noto Sans TC", sans-serif;
+  /* 設定字型 */
+  font-size: 16px;
+  line-height: 32px;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  line-height: 1.5;
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+li {
+  list-style-type: none;
+  /* 拿掉前方圈圈 */
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  /* 拿掉底線 */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 設定區塊寬度一致並置中 */
+.container {
+  width: 80%;
+  margin: 0 auto 3rem auto;
+}
+
+/* 共用按鈕樣式 */
+.action {
+  color: white;
+  background: #5c59c1;
+  border-radius: 0.25rem;
+  display: inline-block;
+  font-size: 1.3rem;
+  padding: 0.25rem 1rem;
+  transition: all 0.1s linear;
+  width: 30%;
+  height: 50px;
+  line-height: 40px;
+}
+
+/*滑過按鈕的時候，做一些陰影和背景顏色的變化*/
+.action:hover {
+  background: #267c99;
+  /* 陰影 */
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(87, 87, 87, 1);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(87, 87, 87, 1);
+  box-shadow: 0px 1px 5px 0px rgba(87, 87, 87, 1);
+}
+
+/*tool*/
+.tool{
+  padding-top: 100px;
+  width: 100%;
+}
+.form-control-a {
+  max-width: 100%;
+  margin: 10px auto;
+}
+
+.form-control {
+  width: 100%;
+  margin: 0px auto;
+  border-style: solid;
+  border-color: #000;
+  border-width: 1px;
+}
+.bottom{
+  width: 100%;
+  margin: 0px auto;
+  display: inline-flex;
+  justify-content: space-around;
+}
+
+.form-control-file {
+  width: 100%;
+  margin: 0px auto 10px auto;
+  padding: 10px;
+  height: 300px;
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #000;
+  border-width: 1px;
+}
+
+/*footer*/
+.footer {
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: #000;
+  color: #ffffff;
+}
+</style>
