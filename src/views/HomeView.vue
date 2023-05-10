@@ -158,7 +158,7 @@ html {
 }
 
 .A-img {
-  background-image: url("../assets/1.png");
+  background-image: url("../assets/3.png");
   width: 100%;
   height: 300px;
   position: relative;
@@ -225,7 +225,7 @@ html {
   width: 100%;
   height: 50px;
   line-height: 50px;
-  background-color: #000;
+  background-color: #038686;
   color: #ffffff;
 }
 

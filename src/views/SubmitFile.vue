@@ -408,7 +408,6 @@ html {
 
 /*B*/
 .alltable {
-  max-width: 900px;
   margin: 0px auto;
 }
 .table0 {
@@ -436,7 +435,9 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0px;
+  border-style: solid;
+  border-color: #000;
+  border-width: 2px 0px ;
 }
 .table:hover,
 .tableA:hover {
@@ -451,7 +452,7 @@ html {
   width: 100%;
   height: 50px;
   line-height: 50px;
-  background-color: #000;
+  background-color: #038686;
   color: #ffffff;
   margin-top: 80px;
 }
