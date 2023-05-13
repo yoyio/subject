@@ -1,26 +1,32 @@
 <template>
-  <!--A-->
-  <div class="container">
-    <div class="bnt" style="padding-top: 80px"></div>
-  </div>
   <!--B-->
-  <div class="container" style="margin-top: 50px;">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th scope="col" width="220">#</th>
-          <th scope="col" width="650">名稱</th>
-          <th scope="col" width="0"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(item, key) in products" :key="key" style="height:30px; line-height:30px;">
-          <th scope="row">{{ item.id }}</th>
-          <td>第{{ item.id }}篇名稱</td>
-          <td><RouterLink :to="`/submitFile/${item.id}`" class="sel">查看</RouterLink></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="container" >
+    <div class="B">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col" width="220">#</th>
+            <th scope="col" width="650">名稱</th>
+            <th scope="col" width="0"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(item, key) in products"
+            :key="key"
+            style="height: 30px; line-height: 30px"
+          >
+            <th scope="row">{{ item.id }}</th>
+            <td>第{{ item.id }}篇名稱</td>
+            <td>
+              <RouterLink :to="`/submitFile/${item.id}`" class="sel"
+                >查看</RouterLink
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!-- contact -->
@@ -166,8 +172,11 @@ html {
   font-size: 24px;
   color: #038686;
 }
-
 /*B*/
+.B{
+  padding-top: 100px;
+  min-height: 90vh;
+}
 
 /*footer*/
 .footer {
@@ -177,26 +186,6 @@ html {
   line-height: 50px;
   background-color: #038686;
   color: #ffffff;
-  margin-top: 80px;
-}
-
-/* 電腦版樣式 */
-@media screen and (min-width: 900px) {
-  /*A*/
-  .A {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .results-text {
-    width: 71%;
-  }
-
-  .label-area {
-    width: 27%;
-    grid-template-columns: 100%;
-  }
 }
 </style>
 
