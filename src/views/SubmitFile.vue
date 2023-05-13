@@ -1,8 +1,7 @@
 <template>
   <!--A-->
   <div class="container">
-    <div class="bnt" style="padding-top: 120px">
-      <RouterLink :to="`/submitFile/${item.id}`" class="sel" v-for="(item, key) in products" :key="key" >{{item.id}}</RouterLink>
+    <div class="bnt" style="padding-top: 50px">
       <div class="num" style="font-weight: 800;">第 {{$route.params.id}} 篇</div>
     </div>
     <div class="A">
@@ -128,7 +127,7 @@
 
   <!-- contact -->
   <div class="contact">
-    <RouterLink to="/tool" class="about-button">
+    <RouterLink to="/fileTable" class="about-button">
       <font-awesome-icon icon="arrow-left" style="color: #fff" />
     </RouterLink>
   </div>

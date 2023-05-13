@@ -21,7 +21,7 @@
       <div class="form-control-a">
         <input type="file" class="form-control-file" id="text-input" name="text-input" rows="20" cols="50" required="true" multiple="multiple" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
         <div class="bottom" style="margin-top: 10px">
-          <RouterLink :to="`/submitFile/1`" class="action" style="width: 20%;text-align: center;">送出</RouterLink>
+          <RouterLink :to="`/fileTable`" class="action" style="width: 20%;text-align: center;">送出</RouterLink>
           <div class="action" style="width: 20%;text-align: center;" @click="delfile(e)">刪除</div>
         </div>
       </div>
