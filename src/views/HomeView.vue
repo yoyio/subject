@@ -16,16 +16,16 @@
   </div>
 
   <!--B-->
+  <div class="bb">
     <div class="B">
       <div class="B-tltie">
-        <h1 style="font-weight: 800;font-size: 50px;">關於</h1>
+        <h1 style="font-weight: 800;font-size: 50px;">技術</h1>
       </div>
       <div class="B-text">
-        <p style="color: #000; padding:10px 30px;">與許聞廉教授合作，應用獨有的統計式準則模型暨語意簡化法(Statistical Principle-based Approach & Reduction algorithm,SPBAR)於電子病歷，建構電子病歷之個人資料去識別化和擷取電子病歷內容實體辨識以及關聯。</p>
-        <p style="color: #000; padding:10px 30px;">SPBAR依靠直觀自然語言知識以及可解釋性的推理過程擷取非結構化知識。我們應用SPBAR方法已開發腎臟超音波報告結構化擷取工具，提供醫師或研究人員可透過非結構化數據轉語意結構化工具，擷取相關語意結構化的數據，便於進行數據科學、機器學習以及其他醫療分析應用。</p>
-        <p style="color: #000; padding:10px 30px;">開發非結構化數據轉語意結構化工具已No-Code方式開發，使用者可以輕鬆應用，將非結構化資料自動轉成據語意結構化資料，也可供醫院使用API方式使用衍生更多智慧輔助醫療決策的系統開發。此工具大幅縮滅醫師學習歷程和研究人員學習成本，協助產生更多醫療臨床研究成果，進而促進臨床決策。</p>
+        <p style="color: #000; padding:10px 30px;">實驗室與許聞廉教授合作，應用獨有的統計式準則模型暨語意簡化法(Statistical Principle-based Approach & Reduction algorithm,SPBAR)於電子病歷，建構電子病歷之個人資料去識別化和擷取電子病歷內容實體辨識以及關聯。SPBAR依靠直觀自然語言知識以及可解釋性的推理過程擷取非結構化知識。我們應用SPBAR方法已開發腎臟超音波報告結構化擷取工具，提供醫師或研究人員可透過非結構化數據轉語意結構化工具，擷取相關語意結構化的數據，便於進行數據科學、機器學習以及其他醫療分析應用。開發非結構化數據轉語意結構化工具已No-Code方式開發，使用者可以輕鬆應用，將非結構化資料自動轉成據語意結構化資料，也可供醫院使用API方式使用衍生更多智慧輔助醫療決策的系統開發。此工具大幅縮滅醫師學習歷程和研究人員學習成本，協助產生更多醫療臨床研究成果，進而促進臨床決策。</p>
       </div>
     </div>
+  </div>
 
   <!--C-->
   <div class="container">
@@ -184,11 +184,14 @@ html {
 }
 
 /*B*/
-.B {
-  margin: 80px 0px 0px 0px;
-  padding-bottom: 50px;
+.bb{
   width: 100%;
   background-color: #5c59c1;
+}
+.B {
+  margin: 80px auto;
+  padding-bottom: 50px;
+  width: 85%;
   color: #fff;
 }
 
@@ -215,7 +218,6 @@ html {
   border-radius: 0.3rem;
   color: #fff;
   display: flex;
-  padding: 0px 10px;
   align-items: center;
 }
 

@@ -15,7 +15,7 @@
         </li>
         <li class="nav-item"><RouterLink to="/tool" class="nav-link">工具</RouterLink></li>
         <li class="nav-item">
-          <!-- <RouterLink to="/about" class="nav-link">關於我們</RouterLink> -->
+          <RouterLink to="/about" class="nav-link">關於我們</RouterLink>
         </li>
       </ul>
     </nav>

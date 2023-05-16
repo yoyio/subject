@@ -3,26 +3,102 @@
   <div class="container">
     <!-- TEXT -->
     <div class="tool">
-      <div class="text-title" style="font-size: 32px;margin-bottom: 20px;color: #038686;font-weight: bold;" >TEXT-</div>
+      <div
+        class="text-title"
+        style="
+          font-size: 32px;
+          margin-bottom: 20px;
+          color: #038686;
+          font-weight: bold;
+        "
+      >
+        TEXT-
+      </div>
       <form action="" id="" method="post" target="id_iframe">
         <div class="form-control-a">
-          <textarea class="form-control" id="text-input" name="text-input" rows="15" cols="50" required="true" v-model="text"></textarea>
+          <textarea
+            class="form-control"
+            id="text-input"
+            name="text-input"
+            rows="15"
+            cols="50"
+            required="true"
+            placeholder="Right kidney :
+Length : 9.57 cm
+Cortical echogenicity : Gr 1
+Parenchymal thickness : normal
+Renal sinus : no separation
+Left kidney :
+Length : 9.55 cm
+Cortical echogenicity : Gr 1
+Parenchymal thickness : normal
+Renal sinus : no separation
+Bladder : not fully distended
+<Impression>
+Parenchymal renal disease , bilateral
+incomplete bladder study"
+            v-model="text"
+          ></textarea>
           <!-- <input class="action" type="button" id="button1" value="驗證" onclick="verify()"></input> -->
           <div class="bottom" style="margin-top: 20px">
-            <RouterLink to="/submitText" class="action" style="width: 20%;text-align: center;" >送出</RouterLink>
-            <div class="action" style="width: 20%;text-align: center;" @click="deltext">刪除</div>
+            <RouterLink
+              to="/submitText"
+              class="action"
+              style="width: 20%; text-align: center"
+              >送出</RouterLink
+            >
+            <div
+              class="action"
+              style="width: 20%; text-align: center"
+              @click="deltext"
+            >
+              刪除
+            </div>
           </div>
         </div>
       </form>
     </div>
+    <hr style="margin: 80px 0px; color: #000" />
     <!-- file -->
-    <div class="file" id="file" style="margin: 80px 0px;">
-      <div class="file-title" style="font-size: 32px;margin-bottom: 20px;color: #038686;font-weight: bold;">FILE-</div>
+    <div class="file" id="file" style="margin: 80px 0px">
+      <div
+        class="file-title"
+        style="
+          font-size: 32px;
+          margin-bottom: 20px;
+          color: #038686;
+          font-weight: bold;
+        "
+      >
+        FILE-
+      </div>
       <div class="form-control-a">
-        <input type="file" class="form-control-file" id="text-input" name="text-input" rows="20" cols="50" required="true" multiple="multiple" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        <input
+          type="file"
+          class="form-control-file"
+          id="text-input"
+          name="text-input"
+          rows="20"
+          cols="50"
+          required="true"
+          multiple="multiple"
+          aria-describedby="inputGroupFileAddon04"
+          aria-label="Upload"
+        />
         <div class="bottom" style="margin-top: 10px">
-          <RouterLink :to="`/fileTable`" class="action" style="width: 20%;text-align: center;">送出</RouterLink>
-          <div class="action" style="width: 20%;text-align: center;" @click="delfile(e)">刪除</div>
+          <RouterLink
+            :to="`/fileTable`"
+            class="action"
+            style="width: 20%; text-align: center"
+            >送出</RouterLink
+          >
+          <div
+            class="action"
+            style="width: 20%; text-align: center"
+            @click="delfile(e)"
+          >
+            刪除
+          </div>
         </div>
       </div>
     </div>
@@ -38,20 +114,20 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      text: ''
-    }
+      text: "",
+    };
   },
   methods: {
-    deltext () {
-      this.text = ''
+    deltext() {
+      this.text = "";
     },
-    delfile (e) {
-      e.value = ''
-    }
-  }
-}
+    delfile(e) {
+      e.value = "";
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -129,7 +205,7 @@ html {
 }
 
 /*tool*/
-.tool{
+.tool {
   padding-top: 100px;
   width: 100%;
 }
@@ -145,7 +221,7 @@ html {
   border-color: #000;
   border-width: 1px;
 }
-.bottom{
+.bottom {
   width: 100%;
   margin: 0px auto;
   display: inline-flex;
@@ -156,7 +232,7 @@ html {
   width: 100%;
   margin: 0px auto 10px auto;
   padding: 10px;
-  height: 300px;
+  height: 150px;
   background-color: #ffffff;
   border-style: solid;
   border-color: #000;
