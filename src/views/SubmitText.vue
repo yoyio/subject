@@ -51,9 +51,7 @@
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
-          <span id="disease_name" class="d-input__disease_name"
-            >疾病名稱</span
-          >
+          <span id="disease_name" class="d-input__disease_name">疾病名稱</span>
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
@@ -93,31 +91,31 @@
       </div>
       <div class="tableA">
         <div class="table-title">腎水泡名稱</div>
-        <div class="table-title">123456</div>
+        <div class="table-title">{{renalCystMention}}</div>
       </div>
       <div class="table">
         <div class="table-title">腎水泡數量</div>
-        <div class="table-title">123456</div>
+        <div class="table-title">{{renalCystAmount}}</div>
       </div>
       <div class="tableA">
         <div class="table-title">腎水泡大小</div>
-        <div class="table-title">123456</div>
+        <div class="table-title">{{renalCystSize}}</div>
       </div>
       <div class="table">
         <div class="table-title">腎水泡部位</div>
-        <div class="table-title">123456</div>
+        <div class="table-title">{{renalCystLocation}}</div>
       </div>
       <div class="tableA">
         <div class="table-title">疾病名稱</div>
-        <div class="table-title">123456</div>
+        <div class="table-title">{{diseaseName}}</div>
       </div>
       <div class="table">
         <div class="table-title">疾病部位</div>
-        <div class="table-title">123456</div>
+        <div class="table-title">{{diseaseLocation}}</div>
       </div>
       <div class="tableA">
         <div class="table-title">腎水泡特徵</div>
-        <div class="table-title">123456</div>
+        <div class="table-title">{{renalCystMorphProgression}}</div>
       </div>
     </div>
   </div>
@@ -125,7 +123,7 @@
   <!-- contact -->
   <div class="contact">
     <RouterLink to="/tool" class="about-button">
-      <font-awesome-icon icon="arrow-left" style="color: #fff;"/>
+      <font-awesome-icon icon="arrow-left" style="color: #fff" />
     </RouterLink>
   </div>
 
@@ -403,7 +401,7 @@ html {
   align-items: center;
   border-style: solid;
   border-color: #000;
-  border-width: 2px 0px ;
+  border-width: 2px 0px;
 }
 .table:hover,
 .tableA:hover {
@@ -451,23 +449,83 @@ export default {
       type: String,
     },
   },
-  data () {
+  data() {
     return {
       result: {},
-    }
+      renalCystSize:[],
+      renalCystMention:[],
+      renalCystAmount:[],
+      renalCystLocation:[],
+      diseaseName:[],
+      diseaseLocation:[],
+      renalCystMorphProgression:[]
+    };
   },
-  mounted () {
-    const dataUrl = `http://iasl.asia.edu.tw:8082/api?text=${this.id}`
+  mounted() {
+    const dataUrl = `http://iasl.asia.edu.tw:8082/api?text=${this.id}`;
     this.$http
       .get(`${dataUrl}`)
       .then((res) => {
-        console.log('res.data',res.data)
-        this.result=res.data.result[1].tag
-        console.log('result',this.result)
+        console.log("res.data", res.data);
+        this.result = res.data.result;
+        //取每項資料
+        var Total = res.data.result.length;
+        for (var i = 0; i < Total; i++) {
+          if ((res.data.result[i].tag == "renal_cyst_size")) {//腎水泡大小
+            this.renalCystSize.push(this.id.substring(//取腎水泡大小
+                res.data.result[i].start,
+                res.data.result[i].end
+              ));
+          }if ((res.data.result[i].tag == "renal_cyst_mention")) {//腎水泡名稱
+            this.renalCystMention.push(this.id.substring(//取腎水泡名稱
+                res.data.result[i].start,
+                res.data.result[i].end
+              ));
+          }if ((res.data.result[i].tag == "renal_cyst_amount")) {//腎水泡數量
+            this.renalCystAmount.push(this.id.substring(//取腎水泡數量
+                res.data.result[i].start,
+                res.data.result[i].end
+              ));
+          }if ((res.data.result[i].tag == "renal_cyst_location")) {//腎水泡部位
+            this.renalCystLocation.push(this.id.substring(//取腎水泡部位
+                res.data.result[i].start,
+                res.data.result[i].end
+              ));
+          }if ((res.data.result[i].tag == "disease_name")) {//疾病名稱
+            this.diseaseName.push(this.id.substring(//取疾病名稱
+                res.data.result[i].start,
+                res.data.result[i].end
+              ));
+          }if ((res.data.result[i].tag == "disease_location")) {//疾病部位
+            this.diseaseLocation.push(this.id.substring(//取疾病部位
+                res.data.result[i].start,
+                res.data.result[i].end
+              ));
+          } if ((res.data.result[i].tag == "renal_cyst_morph_progression")) {//腎水泡特徵
+            this.renalCystMorphProgression.push(this.id.substring(//取腎水泡特徵
+                res.data.result[i].start,
+                res.data.result[i].end
+              ));
+          }if(this.renalCystSize==[]){//如果沒有腎水泡大小
+            this.renalCystSize="無"
+          }if(this.renalCystMorphProgression==[]){//如果沒有腎水泡特徵
+            this.renalCystMorphProgression="無"
+          }else {
+            console.log(
+              "key3",
+              this.id.substring(
+                res.data.result[i].start,
+                res.data.result[i].end
+              )
+            );
+          }
+          
+        }
+        console.log(this.id.substring(253, 265));
       })
       .catch((err) => {
-        console.log(err)
-      })
-  }
-}
+        console.log(err);
+      });
+  },
+};
 </script>
