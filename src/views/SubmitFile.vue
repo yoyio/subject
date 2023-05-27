@@ -13,55 +13,55 @@
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
           <span id="left_kidney_size" class="d-input__left_kidney_size"
-            >left_kidney_size</span
+            >左腎大小</span
           >
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
           <span class="d-input__right_kidney_size" id="right_kidney_size"
-            >right_kidney_size</span
+            >右腎大小</span
           >
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
           <span id="graft_kidney_size" class="d-input__graft_kidney_size"
-            >graft_kidney_size</span
+            >人工腎臟大小</span
           >
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
           <span id="renal_cyst_mention" class="d-input__renal_cyst_mention"
-            >renal_cyst_mention</span
+            >腎水泡名稱</span
           >
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
           <span id="renal_cyst_amount" class="d-input__renal_cyst_amount"
-            >renal_cyst_amount</span
+            >腎水泡數量</span
           >
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
           <span id="renal_cyst_size" class="d-input__renal_cyst_size"
-            >renal_cyst_size</span
+            >腎水泡大小</span
           >
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
           <span id="renal_cyst_location" class="d-input__renal_cyst_location"
-            >renal_cyst_location</span
+            >腎水泡部位</span
           >
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
           <span id="disease_name" class="d-input__disease_name"
-            >disease_name</span
+            >疾病名稱</span
           >
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
           <span id="disease_location" class="d-input__disease_location"
-            >disease_location</span
+            >疾病部位</span
           >
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
@@ -69,7 +69,7 @@
           <span
             id="renal_cyst_morph_progression"
             class="d-input__renal_cyst_morph_progression"
-            >renal_cyst_morph_progression</span
+            >腎水泡特徵</span
           >
         </label>
       </div>
@@ -83,43 +83,43 @@
         <div class="table-title">VALUE</div>
       </div>
       <div class="table">
-        <div class="table-title">eft_kidney_size</div>
+        <div class="table-title">左腎大小</div>
         <div class="table-title">123456</div>
       </div>
       <div class="tableA">
-        <div class="table-title">right_kidney_size</div>
+        <div class="table-title">右腎大小</div>
         <div class="table-title">123456</div>
       </div>
       <div class="table">
-        <div class="table-title">graft_kidney_size</div>
+        <div class="table-title">人工腎臟大小</div>
         <div class="table-title">123456</div>
       </div>
       <div class="tableA">
-        <div class="table-title">renal_cyst_mention</div>
+        <div class="table-title">腎水泡名稱</div>
         <div class="table-title">123456</div>
       </div>
       <div class="table">
-        <div class="table-title">renal_cyst_amount</div>
+        <div class="table-title">腎水泡數量</div>
         <div class="table-title">123456</div>
       </div>
       <div class="tableA">
-        <div class="table-title">renal_cyst_size</div>
+        <div class="table-title">腎水泡大小</div>
         <div class="table-title">123456</div>
       </div>
       <div class="table">
-        <div class="table-title">renal_cyst_location</div>
+        <div class="table-title">腎水泡部位</div>
         <div class="table-title">123456</div>
       </div>
       <div class="tableA">
-        <div class="table-title">disease_name</div>
+        <div class="table-title">疾病名稱</div>
         <div class="table-title">123456</div>
       </div>
       <div class="table">
-        <div class="table-title">disease_location</div>
+        <div class="table-title">疾病部位</div>
         <div class="table-title">123456</div>
       </div>
       <div class="tableA">
-        <div class="table-title">renal_cyst_morph_progression</div>
+        <div class="table-title">腎水泡特徵</div>
         <div class="table-title">123456</div>
       </div>
     </div>

@@ -42,7 +42,7 @@ incomplete bladder study"
           <!-- <input class="action" type="button" id="button1" value="驗證" onclick="verify()"></input> -->
           <div class="bottom" style="margin-top: 20px">
             <RouterLink
-              to="/submitText"
+              :to="`/submitText/${text}`"
               class="action"
               style="width: 20%; text-align: center"
               >送出</RouterLink
@@ -90,6 +90,7 @@ incomplete bladder study"
             :to="`/fileTable`"
             class="action"
             style="width: 20%; text-align: center"
+            
             >送出</RouterLink
           >
           <div
@@ -125,8 +126,8 @@ export default {
     },
     delfile(e) {
       e.value = "";
-    },
-  },
+    }
+  }
 };
 </script>
 
