@@ -3,9 +3,15 @@
   <div class="container">
     <div class="A">
       <div class="A-tltie">
-        <h1 class="banner-title" style="font-weight: 800;">整理您的工作﹑整頓您的生活</h1>
-        <p style="color: #000;margin-top: 20px;">自動標記﹑分類詞彙、清楚的視覺化分析，輕鬆處理任何專案。</p>
-        <RouterLink to="/tool" class="action" style="margin-top: 20px;">開始使用</RouterLink>
+        <h1 class="banner-title" style="font-weight: 800">
+          整理您的工作﹑整頓您的生活
+        </h1>
+        <p style="color: #000; margin-top: 20px">
+          自動標記﹑分類詞彙、清楚的視覺化分析，輕鬆處理任何專案。
+        </p>
+        <RouterLink to="/tool" class="action" style="margin-top: 20px"
+          >開始使用</RouterLink
+        >
       </div>
       <div class="A-text">
         <div class="A-img"></div>
@@ -19,10 +25,17 @@
   <div class="bb">
     <div class="B">
       <div class="B-tltie">
-        <h1 style="font-weight: 800;font-size: 50px;">技術</h1>
+        <h1 style="font-weight: 800; font-size: 50px">技術</h1>
       </div>
       <div class="B-text">
-        <p style="color: #000; padding:10px 30px;">實驗室與許聞廉教授合作，應用獨有的統計式準則模型暨語意簡化法(Statistical Principle-based Approach & Reduction algorithm,SPBAR)於電子病歷，建構電子病歷之個人資料去識別化和擷取電子病歷內容實體辨識以及關聯。SPBAR依靠直觀自然語言知識以及可解釋性的推理過程擷取非結構化知識。我們應用SPBAR方法已開發腎臟超音波報告結構化擷取工具，提供醫師或研究人員可透過非結構化數據轉語意結構化工具，擷取相關語意結構化的數據，便於進行數據科學、機器學習以及其他醫療分析應用。開發非結構化數據轉語意結構化工具已No-Code方式開發，使用者可以輕鬆應用，將非結構化資料自動轉成據語意結構化資料，也可供醫院使用API方式使用衍生更多智慧輔助醫療決策的系統開發。此工具大幅縮滅醫師學習歷程和研究人員學習成本，協助產生更多醫療臨床研究成果，進而促進臨床決策。</p>
+        <p style="color: #000; padding: 10px 30px">
+          實驗室與許聞廉教授合作，應用獨有的統計式準則模型暨語意簡化法(Statistical
+          Principle-based Approach & Reduction
+          algorithm,SPBAR)於電子病歷，建構電子病歷之個人資料去識別化和擷取電子病歷內容實體辨識以及關聯。SPBAR依靠直觀自然語言知識以及可解釋性的推理過程擷取非結構化知識。我們應用SPBAR方法已開發腎臟超音波報告結構化擷取工具，提供醫師或研究人員可透過非結構化數據轉語意結構化工具，擷取相關語意結構化的數據，便於進行數據科學、機器學習以及其他醫療分析應用。開發非結構化數據轉語意結構化工具已No-Code方式開發，使用者可以輕鬆應用，將非結構化資料自動轉成據語意結構化資料，也可供醫院使用API方式使用衍生更多智慧輔助醫療決策的系統開發。此工具大幅縮滅醫師學習歷程和研究人員學習成本，協助產生更多醫療臨床研究成果，進而促進臨床決策。通過對資料進行分類和結構化，醫療專業人員可以更清楚地瞭解
+          報告中包含的資訊，並能更容易地識別可能被忽視的模式和關聯。這
+          使他們更容易對病人的治療和護理做出正確的決定，為病人帶來更為
+          準確的治療。
+        </p>
       </div>
     </div>
   </div>
@@ -31,20 +44,33 @@
   <div class="container">
     <div class="C">
       <div class="C-tltie">
-        <h1 style="font-weight: 800;font-size: 50px;">優勢</h1>
+        <h1 style="font-weight: 800; font-size: 50px">優勢</h1>
+        <p style="font-size: 18px">
+          -快速有效地分析資料，並對病人的診斷和治療做出明智的決定
+        </p>
       </div>
       <div class="C-text">
         <div class="C-p" style="background-color: #038686">
-          <h2>1 <font-awesome-icon icon="pen" style="margin:0px 10px;"/></h2>
-          <p class="ctx">自動標記﹑分類詞彙</p>
+          <h2> <font-awesome-icon icon="circle-check" style="margin: 0px 10px" /></h2>
+          <p class="ctx">提高報告的準確性</p>
         </div>
         <div class="C-p" style="background-color: #bc9d85">
-          <h2>2 <font-awesome-icon icon="palette" style="margin:0px 10px;"/></h2>
+          <h2>
+            <font-awesome-icon icon="chart-pie" style="margin: 0px 10px" />
+          </h2>
           <p class="ctx">清楚的視覺化分析</p>
         </div>
         <div class="C-p" style="background-color: #5c59c1">
-          <h2>3 <font-awesome-icon icon="thumbs-up" style="margin:0px 10px;"/></h2>
-          <p class="ctx">處理任何專案都游刃有餘</p>
+          <h2>
+            <font-awesome-icon icon="arrow-up-right-dots" style="margin: 0px 10px" />
+          </h2>
+          <p class="ctx">提高效率</p>
+        </div>
+        <div class="C-p" style="background-color: #ff8080">
+          <h2>
+            <font-awesome-icon icon="thumbs-up" style="margin: 0px 10px" />
+          </h2>
+          <p class="ctx">改善診斷和治療</p>
         </div>
       </div>
     </div>
@@ -184,7 +210,7 @@ html {
 }
 
 /*B*/
-.bb{
+.bb {
   width: 100%;
   background-color: #5c59c1;
 }
@@ -264,11 +290,11 @@ html {
   .C-p {
     flex-direction: column;
     justify-content: flex-start;
-    width: 30%;
+    width: 23%;
     height: 100px;
     padding: 10px 0px;
   }
-  .ctx{
+  .ctx {
     margin-top: 10px;
   }
 }

@@ -8,7 +8,7 @@ import router from './router'
 import './assets/all.scss'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faArrowRight, faArrowLeft, faPen, faPalette, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faArrowLeft, faChartPie, faPalette, faThumbsUp, faArrowUpRightDots,faCircleCheck} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const app = createApp(App)
@@ -17,4 +17,4 @@ app.use(VueAxios, axios)
 app.use(router)
 app.mount('#app')
 app.component('font-awesome-icon', FontAwesomeIcon)
-library.add(faArrowRight, faArrowLeft, faPen, faPalette, faThumbsUp)
+library.add(faArrowRight, faArrowLeft, faChartPie, faPalette, faThumbsUp, faArrowUpRightDots, faCircleCheck)
