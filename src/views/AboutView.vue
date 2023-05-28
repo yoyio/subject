@@ -47,7 +47,7 @@
           <div class="bb-img"></div>
           <div class="card-body">
             <p class="card-text">許聞廉教授</p>
-            <p class="card-text">hsu@iis.sinica.edu.tw / wenhsu@asia.edu.tw</p>
+            <p class="card-text">wenhsu@asia.edu.tw</p>
           </div>
         </div>
       </div>
@@ -61,24 +61,19 @@
       開發人員
     </h3>
     <div class="C" style="margin-bottom: 20px">
-      <div class="card" style="width: 10rem" data-aos="zoom-in" data-aos-duration="1000">
-        <div class="card-body" style="text-align: center">
-          <h5 class="card-title">王善政</h5>
+      <div class="card" style="width: 10rem" data-aos="zoom-in" data-aos-duration="600">
+        <div class="card-body" style="text-align: center;height: 50px;">
+          <p class="card-title">蔡佳樺</p>
         </div>
       </div>
-      <div class="card" style="width: 10rem" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
-        <div class="card-body" style="text-align: center">
-          <h5 class="card-title">張逢恩</h5>
+      <div class="card" style="width: 10rem" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
+        <div class="card-body" style="text-align: center;height: 50px;">
+          <p class="card-title">高淳翊</p>
         </div>
       </div>
-      <div class="card" style="width: 10rem" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-        <div class="card-body" style="text-align: center">
-          <h5 class="card-title">張致瑋</h5>
-        </div>
-      </div>
-      <div class="card" style="width: 10rem" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
-        <div class="card-body" style="text-align: center">
-          <h5 class="card-title">楊逸凡</h5>
+      <div class="card" style="width: 10rem" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
+        <div class="card-body" style="text-align: center;height: 50px;">
+          <p class="card-title">陳芷柔</p>
         </div>
       </div>
     </div>
@@ -132,10 +127,14 @@
 }
 
 .C {
-  width: 95%;
+  width: 100%;
   margin: 0px auto;
   display: inline-flex;
   flex-wrap: wrap;
+}
+.card-title{
+  font-size: 20px;
+  line-height: 20px;
 }
 
 /*footer*/
