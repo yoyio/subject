@@ -59,20 +59,20 @@
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
+          <span
+            id="renal_cyst_morph_progression"
+            class="d-input__renal_cyst_morph_progression"
+            >腎水泡特徵</span
+          >
+        </label>
+        <label style="margin-right: 0%; padding: 1px 8px">
+          <input type="checkbox" class="d-input" />
           <span id="disease_name" class="d-input__disease_name">疾病名稱</span>
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
           <span id="disease_location" class="d-input__disease_location"
             >疾病部位</span
-          >
-        </label>
-        <label style="margin-right: 0%; padding: 1px 8px">
-          <input type="checkbox" class="d-input" />
-          <span
-            id="renal_cyst_morph_progression"
-            class="d-input__renal_cyst_morph_progression"
-            >腎水泡特徵</span
           >
         </label>
       </div>
