@@ -240,23 +240,6 @@ export default {
       ],
       ulid: "",
     };
-  },
-  mounted() {
-    const dataUrl = "http://iasl.asia.edu.tw:8082/api?text=欲查詢內容";
-
-    this.$http
-      .get(`${dataUrl}`)
-      .then((res) => {
-        this.resultsOB = res.data;
-        this.results = { ...this.resultsOB };
-        this.result = this.results.data.text;
-        console.log(this.result);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },
-  methods: {},
+  }
 };
 </script>

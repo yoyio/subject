@@ -1,4 +1,12 @@
 <template>
+  <loading
+    v-model:active="isLoading"
+    :can-cancel="false"
+    :color="color"
+    :background-color="backgroundColor"
+    :loader="loader"
+    :is-full-page="true"
+  />
   <!--A-->
   <div class="container">
     <div class="bnt" style="padding-top: 50px">
@@ -6,7 +14,7 @@
     </div>
     <div class="A">
       <div class="results-text" id="show" style="overflow-y: auto">
-        <p class="results">{{ result }}</p>
+        <p class="results">{{ id }}</p>
       </div>
       <!--標籤-->
       <div class="label-area" id="labelArea">
@@ -54,9 +62,7 @@
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
-          <span id="disease_name" class="d-input__disease_name"
-            >疾病名稱</span
-          >
+          <span id="disease_name" class="d-input__disease_name">疾病名稱</span>
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
@@ -84,44 +90,116 @@
       </div>
       <div class="table">
         <div class="table-title">左腎大小</div>
-        <div class="table-title">123456</div>
+        <div class="tablevue" v-if="size.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div class="tablevue" v-for="(item, key) in size" :key="key">
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="tableA">
         <div class="table-title">右腎大小</div>
-        <div class="table-title">123456</div>
+        <div class="tablevue" v-if="size.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div class="tablevue" v-for="(item, key) in size" :key="key">
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="table">
         <div class="table-title">人工腎臟大小</div>
-        <div class="table-title">123456</div>
+        <div class="tablevue" v-if="size.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div class="tablevue" v-for="(item, key) in size" :key="key">
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="tableA">
         <div class="table-title">腎水泡名稱</div>
-        <div class="table-title">123456</div>
+        <div class="tablevue" v-if="renalCystMention.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div
+            class="tablevue"
+            v-for="(item, key) in renalCystMention"
+            :key="key"
+          >
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="table">
         <div class="table-title">腎水泡數量</div>
-        <div class="table-title">123456</div>
+        <div class="tablevue" v-if="renalCystAmount.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div
+            class="tablevue"
+            v-for="(item, key) in renalCystAmount"
+            :key="key"
+          >
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="tableA">
         <div class="table-title">腎水泡大小</div>
-        <div class="table-title">123456</div>
+        <div class="tablevue" v-if="renalCystSize.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div class="tablevue" v-for="(item, key) in renalCystSize" :key="key">
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="table">
         <div class="table-title">腎水泡部位</div>
-        <div class="table-title">123456</div>
-      </div>
-      <div class="tableA">
-        <div class="table-title">疾病名稱</div>
-        <div class="table-title">123456</div>
-      </div>
-      <div class="table">
-        <div class="table-title">疾病部位</div>
-        <div class="table-title">123456</div>
+        <div class="tablevue" v-if="renalCystLocation.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div
+            class="tablevue"
+            v-for="(item, key) in renalCystLocation"
+            :key="key"
+          >
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="tableA">
         <div class="table-title">腎水泡特徵</div>
-        <div class="table-title">123456</div>
+        <div class="tablevue" v-if="renalCystMorphProgression.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div
+            class="tablevue"
+            v-for="(item, key) in renalCystMorphProgression"
+            :key="key"
+          >
+            {{ item }},
+          </div>
+        </div>
+        
       </div>
+      <div class="table">
+        <div class="table-title">疾病名稱</div>
+        <div class="tablevue" v-if="diseaseName.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div class="tablevue" v-for="(item, key) in diseaseName" :key="key">
+            {{ item }},
+          </div>
+        </div>
+      </div>
+      <div class="tableA">
+        <div class="table-title">疾病部位</div>
+        <div class="tablevue" v-if="diseaseLocation.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div
+            class="tablevue"
+            v-for="(item, key) in diseaseLocation"
+            :key="key"
+          >
+            {{ item }},
+          </div>
+        </div>
+      </div>
+      
     </div>
   </div>
 
@@ -409,6 +487,10 @@ html {
 .alltable {
   margin: 0px auto;
 }
+.tablevue {
+  display: inline-flex;
+  margin-right: 10px;
+}
 .table0 {
   background-color: #038686;
   color: #fff;
@@ -477,75 +559,138 @@ html {
 </style>
 
 <script>
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
 
 export default {
-  data () {
-    return {
-      resultsOB: {},
-      results: {},
-      result: {},
-      products: [
-        {
-          id: '1',
-          text: '111'
-        },
-        {
-          id: '2',
-          text: '222'
-        },
-        {
-          id: '3',
-          text: '333'
-        },
-        {
-          id: '4',
-          text: '444'
-        },
-        {
-          id: '5',
-          text: '555'
-        },
-        {
-          id: '6',
-          text: '666'
-        },
-        {
-          id: '7',
-          text: '777'
-        },
-        {
-          id: '8',
-          text: '888'
-        },
-        {
-          id: '9',
-          text: '999'
-        },
-        {
-          id: '10',
-          text: '101010'
-        }
-      ],
-      ulid: ''
-    }
+  components: {
+    Loading,
   },
-  mounted () {
-    const dataUrl = 'http://iasl.asia.edu.tw:8082/api?text=欲查詢內容'
-
+  data() {
+    return {
+      result: {},
+      renalCystSize: [],
+      renalCystMention: [],
+      renalCystAmount: [],
+      renalCystLocation: [],
+      diseaseName: [],
+      diseaseLocation: [],
+      renalCystMorphProgression: [],
+      size: [],
+      isLoading: false,
+      color: "#038686",
+      backgroundColor: "#D8D8D8",
+      loader: "dots",
+      id:`Left kidney: 11.9  cm
+Right kidney: >14 cm
+The size and shape of both kidneys are enlarge due to polycystic kidney. 
+The echogenicity of both kidneys is mild decreaed with reduced cortical thickness. 
+The pelvocalyceal systems are not dilated. 
+Multiple echo free cysts are noted at bilateral kidneys. 
+The urinary bladder is not distended in this study.
+Liver also with multiple liver cysts. 
+Impression: 1. Compared wtih ADPKD (mother with ADPKD) and polycystic liver.
+            2. Parenchymal kidney disease 
+            3. Incomplete urinary bladder study`
+    };
+  },
+  mounted() {
+    this.isLoading = true;
+    const dataUrl = `http://iasl.asia.edu.tw:8082/api?text=${this.id}
+`;
     this.$http
       .get(`${dataUrl}`)
       .then((res) => {
-        this.resultsOB = res.data
-        this.results = { ...this.resultsOB }
-        this.result = this.results.data.text
-        console.log(this.result)
-        console.log(res.data)
+        console.log("res.data", res.data);
+        this.result = res.data.result;
+        //取每項資料
+        var Total = res.data.result.length;
+        for (var i = 0; i < Total; i++) {
+          if (res.data.result[i].tag == "renal_cyst_size") {
+            //腎水泡大小
+            this.renalCystSize.push(
+              this.id.substring(
+                //取腎水泡大小
+                res.data.result[i].start,
+                res.data.result[i].end
+              )
+            );
+          }
+          if (res.data.result[i].tag == "renal_cyst_mention") {
+            //腎水泡名稱
+            this.renalCystMention.push(
+              this.id.substring(
+                //取腎水泡名稱
+                res.data.result[i].start,
+                res.data.result[i].end
+              )
+            );
+          }
+          if (res.data.result[i].tag == "renal_cyst_amount") {
+            //腎水泡數量
+            this.renalCystAmount.push(
+              this.id.substring(
+                //取腎水泡數量
+                res.data.result[i].start,
+                res.data.result[i].end
+              )
+            );
+          }
+          if (res.data.result[i].tag == "renal_cyst_location") {
+            //腎水泡部位
+            this.renalCystLocation.push(
+              this.id.substring(
+                //取腎水泡部位
+                res.data.result[i].start,
+                res.data.result[i].end
+              )
+            );
+          }
+          if (res.data.result[i].tag == "disease_name") {
+            //疾病名稱
+            this.diseaseName.push(
+              this.id.substring(
+                //取疾病名稱
+                res.data.result[i].start,
+                res.data.result[i].end
+              )
+            );
+          }
+          if (res.data.result[i].tag == "disease_location") {
+            //疾病部位
+            this.diseaseLocation.push(
+              this.id.substring(
+                //取疾病部位
+                res.data.result[i].start,
+                res.data.result[i].end
+              )
+            );
+          }
+          if (res.data.result[i].tag == "renal_cyst_morph_progression") {
+            //腎水泡特徵
+            this.renalCystMorphProgression.push(
+              this.id.substring(
+                //取腎水泡特徵
+                res.data.result[i].start,
+                res.data.result[i].end
+              )
+            );
+          } else {
+            this.size.push(
+              this.id.substring(
+                //取腎大小
+                res.data.result[i].start,
+                res.data.result[i].end
+              )
+            );
+          }
+        }
+        console.log(this.id.substring(95, 112));
+        this.isLoading = false;
       })
       .catch((err) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
   },
-  methods: {
-  }
-}
+};
 </script>

@@ -87,44 +87,116 @@
       </div>
       <div class="table">
         <div class="table-title">左腎大小</div>
-        <div class="table-title">123456</div>
+        <div class="tablevue" v-if="size.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div class="tablevue" v-for="(item, key) in size" :key="key">
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="tableA">
         <div class="table-title">右腎大小</div>
-        <div class="table-title">123456</div>
+        <div class="tablevue" v-if="size.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div class="tablevue" v-for="(item, key) in size" :key="key">
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="table">
         <div class="table-title">人工腎臟大小</div>
-        <div class="table-title">123456</div>
+        <div class="tablevue" v-if="size.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div class="tablevue" v-for="(item, key) in size" :key="key">
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="tableA">
         <div class="table-title">腎水泡名稱</div>
-        <div class="table-title">{{ renalCystMention }}</div>
+        <div class="tablevue" v-if="renalCystMention.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div
+            class="tablevue"
+            v-for="(item, key) in renalCystMention"
+            :key="key"
+          >
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="table">
         <div class="table-title">腎水泡數量</div>
-        <div class="table-title">{{ renalCystAmount }}</div>
+        <div class="tablevue" v-if="renalCystAmount.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div
+            class="tablevue"
+            v-for="(item, key) in renalCystAmount"
+            :key="key"
+          >
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="tableA">
         <div class="table-title">腎水泡大小</div>
-        <div class="table-title">{{ renalCystSize }}</div>
+        <div class="tablevue" v-if="renalCystSize.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div class="tablevue" v-for="(item, key) in renalCystSize" :key="key">
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="table">
         <div class="table-title">腎水泡部位</div>
-        <div class="table-title">{{ renalCystLocation }}</div>
-      </div>
-      <div class="tableA">
-        <div class="table-title">疾病名稱</div>
-        <div class="table-title">{{ diseaseName }}</div>
-      </div>
-      <div class="table">
-        <div class="table-title">疾病部位</div>
-        <div class="table-title">{{ diseaseLocation }}</div>
+        <div class="tablevue" v-if="renalCystLocation.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div
+            class="tablevue"
+            v-for="(item, key) in renalCystLocation"
+            :key="key"
+          >
+            {{ item }},
+          </div>
+        </div>
       </div>
       <div class="tableA">
         <div class="table-title">腎水泡特徵</div>
-        <div class="table-title">{{ renalCystMorphProgression }}</div>
+        <div class="tablevue" v-if="renalCystMorphProgression.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div
+            class="tablevue"
+            v-for="(item, key) in renalCystMorphProgression"
+            :key="key"
+          >
+            {{ item }},
+          </div>
+        </div>
+        
       </div>
+      <div class="table">
+        <div class="table-title">疾病名稱</div>
+        <div class="tablevue" v-if="diseaseName.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div class="tablevue" v-for="(item, key) in diseaseName" :key="key">
+            {{ item }},
+          </div>
+        </div>
+      </div>
+      <div class="tableA">
+        <div class="table-title">疾病部位</div>
+        <div class="tablevue" v-if="diseaseLocation.length==`0`">無</div>
+        <div class="table-title" v-else>
+          <div
+            class="tablevue"
+            v-for="(item, key) in diseaseLocation"
+            :key="key"
+          >
+            {{ item }},
+          </div>
+        </div>
+      </div>
+      
     </div>
   </div>
 
@@ -382,6 +454,10 @@ html {
 .alltable {
   margin: 0px auto;
 }
+.tablevue {
+  display: inline-flex;
+  margin-right: 10px;
+}
 .table0 {
   background-color: #038686;
   color: #fff;
@@ -473,14 +549,15 @@ export default {
       diseaseName: [],
       diseaseLocation: [],
       renalCystMorphProgression: [],
+      size: [],
       isLoading: false,
-      color: '#038686',
-      backgroundColor:"#D8D8D8",
-      loader:'dots'
+      color: "#038686",
+      backgroundColor: "#D8D8D8",
+      loader: "dots",
     };
   },
   mounted() {
-    this.isLoading = true
+    this.isLoading = true;
     const dataUrl = `http://iasl.asia.edu.tw:8082/api?text=${this.id}`;
     this.$http
       .get(`${dataUrl}`)
@@ -559,19 +636,18 @@ export default {
                 res.data.result[i].end
               )
             );
-          }
-          else {
-            console.log(
-              "key3",
+          } else {
+            this.size.push(
               this.id.substring(
+                //取腎大小
                 res.data.result[i].start,
                 res.data.result[i].end
               )
             );
           }
         }
-        console.log(this.id.substring(253, 265));
-        this.isLoading = false
+        console.log(this.id.substring(95, 112));
+        this.isLoading = false;
       })
       .catch((err) => {
         console.log(err);
