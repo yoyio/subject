@@ -3,20 +3,20 @@
   <div class="container">
     <div class="A">
       <div class="A-tltie">
-        <h1 class="banner-title" style="font-weight: 800">
+        <h1 class="banner-title" style="font-weight: 800" data-aos="fade-right">
           整理您的工作﹑整頓您的生活
         </h1>
-        <p style="color: #000; margin-top: 20px">
+        <p style="color: #000; margin-top: 20px" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
           自動標記﹑分類詞彙、清楚的視覺化分析，輕鬆處理任何專案。
         </p>
-        <RouterLink to="/tool" class="action" style="margin-top: 20px"
+        <RouterLink to="/tool" class="action" style="margin-top: 20px" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200"
           >開始使用</RouterLink
         >
       </div>
       <div class="A-text">
-        <div class="A-img"></div>
-        <div class="A-z"></div>
-        <div class="A-y"></div>
+        <div class="A-img" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="false"></div>
+        <div class="A-z" data-aos="fade-right" data-aos-duration="1500" data-aos-once="false"></div>
+        <div class="A-y" data-aos="fade-left" data-aos-duration="1300" data-aos-once="false"></div>
       </div>
     </div>
   </div>
@@ -24,10 +24,10 @@
   <!--B-->
   <div class="bb">
     <div class="B">
-      <div class="B-tltie">
+      <div class="B-tltie" data-aos="fade-right" data-aos-duration="1000">
         <h1 style="font-weight: 800; font-size: 50px">技術</h1>
       </div>
-      <div class="B-text">
+      <div class="B-text" data-aos="zoom-in" data-aos-duration="1000">
         <p style="color: #000; padding: 10px 30px">
           實驗室與許聞廉教授合作，應用獨有的統計式準則模型暨語意簡化法(Statistical
           Principle-based Approach & Reduction
@@ -43,30 +43,30 @@
   <!--C-->
   <div class="container">
     <div class="C">
-      <div class="C-tltie">
+      <div class="C-tltie" data-aos="zoom-in" data-aos-duration="600">
         <h1 style="font-weight: 800; font-size: 50px">優勢</h1>
         <p style="font-size: 18px">
           -快速有效地分析資料，並對病人的診斷和治療做出明智的決定
         </p>
       </div>
       <div class="C-text">
-        <div class="C-p" style="background-color: #038686">
+        <div class="C-p" style="background-color: #038686" data-aos="fade-right" data-aos-duration="1000">
           <h2> <font-awesome-icon icon="circle-check" style="margin: 0px 10px" /></h2>
           <p class="ctx">提高報告的準確性</p>
         </div>
-        <div class="C-p" style="background-color: #bc9d85">
+        <div class="C-p" style="background-color: #bc9d85" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
           <h2>
             <font-awesome-icon icon="chart-pie" style="margin: 0px 10px" />
           </h2>
           <p class="ctx">清楚的視覺化分析</p>
         </div>
-        <div class="C-p" style="background-color: #5c59c1">
+        <div class="C-p" style="background-color: #5c59c1" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
           <h2>
             <font-awesome-icon icon="arrow-up-right-dots" style="margin: 0px 10px" />
           </h2>
           <p class="ctx">提高效率</p>
         </div>
-        <div class="C-p" style="background-color: #ff8080">
+        <div class="C-p" style="background-color: #ff8080" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
           <h2>
             <font-awesome-icon icon="thumbs-up" style="margin: 0px 10px" />
           </h2>

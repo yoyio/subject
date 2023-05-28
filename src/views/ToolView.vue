@@ -2,7 +2,7 @@
   <!--tool-->
   <div class="container">
     <!-- TEXT -->
-    <div class="tool">
+    <div class="tool" data-aos="zoom-in">
       <div
         class="text-title"
         style="
@@ -60,7 +60,7 @@ incomplete bladder study"
     </div>
     <hr style="margin: 80px 0px; color: #000" />
     <!-- file -->
-    <div class="file" id="file" style="margin: 80px 0px">
+    <div class="file" id="file" style="margin: 80px 0px" data-aos="zoom-in">
       <div
         class="file-title"
         style="

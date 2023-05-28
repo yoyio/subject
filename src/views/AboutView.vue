@@ -7,7 +7,7 @@
     >
       亞洲大學-精準健康研究中心
     </h3>
-    <div class="A">
+    <div class="A" data-aos="zoom-in-up" data-aos-duration="1000">
       <div class="A-tltie">
         <div class="A-img"></div>
       </div>
@@ -33,7 +33,7 @@
       專案負責人
     </h3>
     <div class="B">
-      <div class="B-tltie">
+      <div class="B-tltie" data-aos="flip-left" data-aos-duration="1000">
         <div class="card" style="width: 20rem">
           <div class="BB-img"></div>
           <div class="card-body">
@@ -42,7 +42,7 @@
           </div>
         </div>
       </div>
-      <div class="B-text">
+      <div class="B-text"  data-aos="flip-right" data-aos-duration="1000">
         <div class="card" style="width: 20rem">
           <div class="bb-img"></div>
           <div class="card-body">
@@ -61,22 +61,22 @@
       開發人員
     </h3>
     <div class="C" style="margin-bottom: 20px">
-      <div class="card" style="width: 10rem">
+      <div class="card" style="width: 10rem" data-aos="zoom-in" data-aos-duration="1000">
         <div class="card-body" style="text-align: center">
           <h5 class="card-title">王善政</h5>
         </div>
       </div>
-      <div class="card" style="width: 10rem">
+      <div class="card" style="width: 10rem" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
         <div class="card-body" style="text-align: center">
           <h5 class="card-title">張逢恩</h5>
         </div>
       </div>
-      <div class="card" style="width: 10rem">
+      <div class="card" style="width: 10rem" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
         <div class="card-body" style="text-align: center">
           <h5 class="card-title">張致瑋</h5>
         </div>
       </div>
-      <div class="card" style="width: 10rem">
+      <div class="card" style="width: 10rem" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
         <div class="card-body" style="text-align: center">
           <h5 class="card-title">楊逸凡</h5>
         </div>
