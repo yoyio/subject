@@ -1,7 +1,7 @@
 <template>
   <!--導覽列-->
   <header>
-    <RouterLink to="/" class="navbar-brand">腎臟超音波病例結構化</RouterLink>
+    <RouterLink to="/" class="navbar-brand">腎臟超音波病歷結構化</RouterLink>
     <!--加上導覽列-->
     <input type="checkbox" class="navbar-toggle" id="navbar-toggle" />
     <label class="navbar-toggle-label" for="navbar-toggle">

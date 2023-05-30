@@ -12,7 +12,7 @@
           font-weight: bold;
         "
       >
-        TEXT-
+        上傳病歷-
       </div>
       <form action="" id="" method="post" target="id_iframe">
         <div class="form-control-a">
@@ -70,37 +70,38 @@ incomplete bladder study"
           font-weight: bold;
         "
       >
-        FILE-
+        上傳檔案-
       </div>
       <div class="form-control-a">
-        <input
-          type="file"
-          class="form-control-file"
-          id="text-input"
-          name="text-input"
-          rows="20"
-          cols="50"
-          required="true"
-          multiple="multiple"
-          aria-describedby="inputGroupFileAddon04"
-          aria-label="Upload"
-        />
-        <div class="bottom" style="margin-top: 10px">
-          <RouterLink
-            :to="`/fileTable`"
-            class="action"
-            style="width: 20%; text-align: center"
-            
-            >送出</RouterLink
-          >
-          <div
-            class="action"
-            style="width: 20%; text-align: center"
-            @click="delfile(e)"
-          >
-            刪除
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <input
+            type="file"
+            class="form-control-file"
+            name="files"
+            rows="20"
+            cols="50"
+            required="true"
+            multiple="multiple"
+            aria-describedby="inputGroupFileAddon04"
+            aria-label="Upload"
+          />
+          <div class="bottom" style="margin-top: 10px">
+            <RouterLink
+              :to="`/fileTable`"
+              class="action"
+              style="width: 20%; text-align: center"
+              @click="postfile()"
+              >送出</RouterLink
+            >
+            <div
+              class="action"
+              style="width: 20%; text-align: center"
+              @click="delfile(e)"
+            >
+              刪除
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -126,8 +127,20 @@ export default {
     },
     delfile(e) {
       e.value = "";
+    },
+    postfile(){
+      this.$http
+      .post(`http://iasl.asia.edu.tw:8082/upload/`)
+      .then((res) => {
+        console.log("up", res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     }
-  }
+  },
+  mounted() {
+  },
 };
 </script>
 

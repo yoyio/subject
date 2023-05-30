@@ -11,7 +11,7 @@
   <div class="container">
     <div class="A">
       <div class="results-text" id="show" style="overflow-y: auto">
-        <p class="results">{{ id }}</p>
+        <p class="results">{{ text }}</p>
       </div>
       <!--標籤-->
       <div class="label-area" id="labelArea">
@@ -554,14 +554,18 @@ export default {
       color: "#038686",
       backgroundColor: "#D8D8D8",
       loader: "dots",
+      text:{}
     };
   },
   mounted() {
+    console.log(this.id.substring(6,8));
     this.isLoading = true;
     const dataUrl = `http://iasl.asia.edu.tw:8082/api?text=${this.id}`;
     this.$http
       .get(`${dataUrl}`)
       .then((res) => {
+        this.text=res.data.text.text
+
         console.log("res.data", res.data);
         this.result = res.data.result;
         //取每項資料
@@ -646,7 +650,7 @@ export default {
             );
           }
         }
-        console.log(this.id.substring(95, 112));
+        console.log(this.id.substring(1,2 ));
         this.isLoading = false;
       })
       .catch((err) => {
