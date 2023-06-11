@@ -87,27 +87,27 @@
       </div>
       <div class="table">
         <div class="table-title">左腎大小</div>
-        <div class="tablevue" v-if="size.length==`0`">無</div>
+        <div class="tablevue" v-if="leftKidneySize.length==`0`">無</div>
         <div class="table-title" v-else>
-          <div class="tablevue" v-for="(item, key) in size" :key="key">
+          <div class="tablevue" v-for="(item, key) in leftKidneySize" :key="key">
             {{ item }},
           </div>
         </div>
       </div>
       <div class="tableA">
         <div class="table-title">右腎大小</div>
-        <div class="tablevue" v-if="size.length==`0`">無</div>
+        <div class="tablevue" v-if="rightKidneySize.length==`0`">無</div>
         <div class="table-title" v-else>
-          <div class="tablevue" v-for="(item, key) in size" :key="key">
+          <div class="tablevue" v-for="(item, key) in rightKidneySize" :key="key">
             {{ item }},
           </div>
         </div>
       </div>
       <div class="table">
         <div class="table-title">人工腎臟大小</div>
-        <div class="tablevue" v-if="size.length==`0`">無</div>
+        <div class="tablevue" v-if="graftKidneySize.length==`0`">無</div>
         <div class="table-title" v-else>
-          <div class="tablevue" v-for="(item, key) in size" :key="key">
+          <div class="tablevue" v-for="(item, key) in graftKidneySize" :key="key">
             {{ item }},
           </div>
         </div>
@@ -549,6 +549,9 @@ export default {
       diseaseName: [],
       diseaseLocation: [],
       renalCystMorphProgression: [],
+      leftKidneySize:[],
+      rightKidneySize:[],
+      graftKidneySize:[],
       size: [],
       isLoading: false,
       color: "#038686",
@@ -558,14 +561,12 @@ export default {
     };
   },
   mounted() {
-    console.log(this.id.substring(6,8));
     this.isLoading = true;
     const dataUrl = `http://iasl.asia.edu.tw:8082/api?text=${this.id}`;
     this.$http
       .get(`${dataUrl}`)
       .then((res) => {
         this.text=res.data.text.text
-
         console.log("res.data", res.data);
         this.result = res.data.result;
         //取每項資料
@@ -574,83 +575,71 @@ export default {
           if (res.data.result[i].tag == "renal_cyst_size") {
             //腎水泡大小
             this.renalCystSize.push(
-              this.id.substring(
-                //取腎水泡大小
-                res.data.result[i].start,
-                res.data.result[i].end
-              )
+              res.data.result[i].word
             );
           }
           if (res.data.result[i].tag == "renal_cyst_mention") {
             //腎水泡名稱
             this.renalCystMention.push(
-              this.id.substring(
-                //取腎水泡名稱
-                res.data.result[i].start,
-                res.data.result[i].end
-              )
+              res.data.result[i].word
             );
           }
           if (res.data.result[i].tag == "renal_cyst_amount") {
             //腎水泡數量
             this.renalCystAmount.push(
-              this.id.substring(
-                //取腎水泡數量
-                res.data.result[i].start,
-                res.data.result[i].end
-              )
+              res.data.result[i].word
             );
           }
           if (res.data.result[i].tag == "renal_cyst_location") {
             //腎水泡部位
             this.renalCystLocation.push(
-              this.id.substring(
-                //取腎水泡部位
-                res.data.result[i].start,
-                res.data.result[i].end
-              )
+              res.data.result[i].word
             );
           }
           if (res.data.result[i].tag == "disease_name") {
             //疾病名稱
             this.diseaseName.push(
-              this.id.substring(
-                //取疾病名稱
-                res.data.result[i].start,
-                res.data.result[i].end
-              )
+              res.data.result[i].word
             );
           }
           if (res.data.result[i].tag == "disease_location") {
             //疾病部位
             this.diseaseLocation.push(
-              this.id.substring(
-                //取疾病部位
-                res.data.result[i].start,
-                res.data.result[i].end
-              )
+              res.data.result[i].word
             );
           }
           if (res.data.result[i].tag == "renal_cyst_morph_progression") {
             //腎水泡特徵
             this.renalCystMorphProgression.push(
-              this.id.substring(
-                //取腎水泡特徵
-                res.data.result[i].start,
-                res.data.result[i].end
-              )
+              res.data.result[i].word
             );
-          } else {
-            this.size.push(
-              this.id.substring(
-                //取腎大小
-                res.data.result[i].start,
-                res.data.result[i].end
-              )
+          }if (res.data.result[i].tag == "left_kidney_size") {
+            //左腎大小
+            this.leftKidneySize.push(
+              res.data.result[i].word
+            );
+          } if (res.data.result[i].tag == "right_kidney_size") {
+            //右腎大小
+            this.rightKidneySize.push(
+              res.data.result[i].word
+            );
+          }if (res.data.result[i].tag == "graft_kidney_size") {
+            //人工腎臟大小
+            this.graftKidneySize.push(
+              res.data.result[i].word
             );
           }
+          // if (res.data.result[i].tag == "right_kidney_size") {
+          //   //右腎大小
+          //   this.rightKidneySize.push(
+          //     this.id.substring(
+          //       //取右腎大小 
+          //       res.data.result[i].start,
+          //       res.data.result[i].end
+          //     )
+          //   );
+          // }
         }
-        console.log(this.id.substring(1,2 ));
         this.isLoading = false;
       })
       .catch((err) => {

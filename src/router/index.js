@@ -25,7 +25,10 @@ const routes = [
   {
     path: '/fileTable',
     name: 'fileTable',
-    component: () => import('../views/FileTable.vue')
+    component: () => import('../views/FileTable.vue'),
+    props: (route) => ({
+      query: route.query
+    })
   },
   {
     path: '/submitFile/:id',

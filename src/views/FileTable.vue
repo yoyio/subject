@@ -1,7 +1,8 @@
 <template>
   <!--B-->
-  <div class="container" >
+  <div class="container">
     <div class="B">
+      {{ query }}
       <table class="table table-striped table-hover">
         <thead>
           <tr>
@@ -12,12 +13,12 @@
         </thead>
         <tbody>
           <tr
-            v-for="(item, key) in products"
+            v-for="(item, key) in query"
             :key="key"
             style="height: 30px; line-height: 30px"
           >
-            <th scope="row">{{ item.id }}</th>
-            <td>第{{ item.id }}篇名稱</td>
+            <th scope="row">{{ item }}</th>
+            <td>第{{ item }}篇名稱</td>
             <td>
               <RouterLink :to="`/submitFile/${item.id}`" class="sel"
                 >查看</RouterLink
@@ -173,7 +174,7 @@ html {
   color: #038686;
 }
 /*B*/
-.B{
+.B {
   padding-top: 100px;
   min-height: 90vh;
 }
@@ -190,9 +191,16 @@ html {
 </style>
 
 <script>
+
 export default {
+  props: {
+    query: {
+      type: Object,
+    },
+  },
   data() {
     return {
+      daname:{},
       resultsOB: {},
       results: {},
       result: {},
@@ -240,6 +248,10 @@ export default {
       ],
       ulid: "",
     };
+  },
+  mounted(){
+    console.log(this.$route.query)
+    console.log(JSON.stringify(this.$route.query))
   }
 };
 </script>

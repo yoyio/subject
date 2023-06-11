@@ -82,15 +82,17 @@ incomplete bladder study"
             cols="50"
             required="true"
             multiple="multiple"
+            ref="files"
             aria-describedby="inputGroupFileAddon04"
             aria-label="Upload"
+            @change="fileChange"
           />
           <div class="bottom" style="margin-top: 10px">
             <RouterLink
-              :to="`/fileTable`"
+              :to="`/fileTable?id=${resdata}`"
               class="action"
               style="width: 20%; text-align: center"
-              @click="postfile()"
+              @click.prevent="postfile()"
               >送出</RouterLink
             >
             <div
@@ -105,7 +107,6 @@ incomplete bladder study"
       </div>
     </div>
   </div>
-
   <!-- footer -->
   <div class="footer" id="footer">
     <div class="footer-logo">
@@ -119,6 +120,9 @@ export default {
   data() {
     return {
       text: "",
+      fileName: [],
+      formData: new FormData(),
+      resdata: {},
     };
   },
   methods: {
@@ -128,18 +132,26 @@ export default {
     delfile(e) {
       e.value = "";
     },
-    postfile(){
+    fileChange(e) {
+      for (var i = 0; i < e.target.files.length; i++) {
+        const uploadedFile = this.$refs.files.files[i];
+        this.fileName.push(uploadedFile.name)
+        this.formData.append("files", e.target.files[i]); //用迴圈抓出多少筆再append回來
+      }
+      console.log(this.fileName);
+      this.resdata=JSON.stringify(this.fileName)
+    },
+    postfile() {
       this.$http
-      .post(`http://iasl.asia.edu.tw:8082/upload/`)
-      .then((res) => {
-        console.log("up", res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    }
-  },
-  mounted() {
+        .post(`http://iasl.asia.edu.tw:8082/upload/`, this.formData)
+        .then((res) => {
+          console.log("up", res.data);
+          this.resdata = { ...res.data };
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>
