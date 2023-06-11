@@ -34,6 +34,11 @@ const routes = [
     path: '/submitFile/:id',
     name: 'submitFile',
     component: () => import('../views/SubmitFile.vue')
+  },
+  {
+    path: '/textTool',
+    name: 'textTool',
+    component: () => import('../views/textTool.vue')
   }
 ]
 
