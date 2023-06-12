@@ -124,6 +124,7 @@ export default {
       fileName: [],
       formData: new FormData(),
       resdata: {},
+      datatext:{}
     };
   },
   methods: {
@@ -146,8 +147,9 @@ export default {
       this.$http
         .post(`http://iasl.asia.edu.tw:8082/upload/`, this.formData)
         .then((res) => {
-          console.log("up", res.data);
-          this.resdata = { ...res.data };
+          console.log("up", res.data.result);
+          this.datatext = { ...res.data.result };
+          console.log("datatext", res.data.result[0]);
         })
         .catch((err) => {
           console.log(err);

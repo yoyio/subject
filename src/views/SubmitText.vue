@@ -11,10 +11,21 @@
   <div class="container">
     <div class="A">
       <div class="results-text" id="show" style="overflow-y: auto">
-        <p class="results">{{ text }}</p>
+        <!-- <p class="results">{{ text }}</p> -->
+        <!-- <p class="results" v-html="text"></p> -->
+        <p class="results" v-html="img"></p>
       </div>
       <!--標籤-->
       <div class="label-area" id="labelArea">
+        <label for="org" class="d-input_ option u-t-xs u-strong" style>
+          <input
+            type="checkbox"
+            id="org"
+            value="org"
+            class="d-input_option__box"
+          />
+          <span class="d-input_option_value">ORG</span>
+        </label>
         <label style="margin-right: 0%; padding: 1px 8px">
           <input type="checkbox" class="d-input" />
           <span id="left_kidney_size" class="d-input__left_kidney_size"
@@ -87,34 +98,46 @@
       </div>
       <div class="table">
         <div class="table-title">左腎大小</div>
-        <div class="tablevue" v-if="leftKidneySize.length==`0`">無</div>
+        <div class="tablevue" v-if="leftKidneySize.length == `0`">無</div>
         <div class="table-title" v-else>
-          <div class="tablevue" v-for="(item, key) in leftKidneySize" :key="key">
+          <div
+            class="tablevue"
+            v-for="(item, key) in leftKidneySize"
+            :key="key"
+          >
             {{ item }},
           </div>
         </div>
       </div>
       <div class="tableA">
         <div class="table-title">右腎大小</div>
-        <div class="tablevue" v-if="rightKidneySize.length==`0`">無</div>
+        <div class="tablevue" v-if="rightKidneySize.length == `0`">無</div>
         <div class="table-title" v-else>
-          <div class="tablevue" v-for="(item, key) in rightKidneySize" :key="key">
+          <div
+            class="tablevue"
+            v-for="(item, key) in rightKidneySize"
+            :key="key"
+          >
             {{ item }},
           </div>
         </div>
       </div>
       <div class="table">
         <div class="table-title">人工腎臟大小</div>
-        <div class="tablevue" v-if="graftKidneySize.length==`0`">無</div>
+        <div class="tablevue" v-if="graftKidneySize.length == `0`">無</div>
         <div class="table-title" v-else>
-          <div class="tablevue" v-for="(item, key) in graftKidneySize" :key="key">
+          <div
+            class="tablevue"
+            v-for="(item, key) in graftKidneySize"
+            :key="key"
+          >
             {{ item }},
           </div>
         </div>
       </div>
       <div class="tableA">
         <div class="table-title">腎水泡名稱</div>
-        <div class="tablevue" v-if="renalCystMention.length==`0`">無</div>
+        <div class="tablevue" v-if="renalCystMention.length == `0`">無</div>
         <div class="table-title" v-else>
           <div
             class="tablevue"
@@ -127,7 +150,7 @@
       </div>
       <div class="table">
         <div class="table-title">腎水泡數量</div>
-        <div class="tablevue" v-if="renalCystAmount.length==`0`">無</div>
+        <div class="tablevue" v-if="renalCystAmount.length == `0`">無</div>
         <div class="table-title" v-else>
           <div
             class="tablevue"
@@ -140,7 +163,7 @@
       </div>
       <div class="tableA">
         <div class="table-title">腎水泡大小</div>
-        <div class="tablevue" v-if="renalCystSize.length==`0`">無</div>
+        <div class="tablevue" v-if="renalCystSize.length == `0`">無</div>
         <div class="table-title" v-else>
           <div class="tablevue" v-for="(item, key) in renalCystSize" :key="key">
             {{ item }},
@@ -149,7 +172,7 @@
       </div>
       <div class="table">
         <div class="table-title">腎水泡部位</div>
-        <div class="tablevue" v-if="renalCystLocation.length==`0`">無</div>
+        <div class="tablevue" v-if="renalCystLocation.length == `0`">無</div>
         <div class="table-title" v-else>
           <div
             class="tablevue"
@@ -162,7 +185,9 @@
       </div>
       <div class="tableA">
         <div class="table-title">腎水泡特徵</div>
-        <div class="tablevue" v-if="renalCystMorphProgression.length==`0`">無</div>
+        <div class="tablevue" v-if="renalCystMorphProgression.length == `0`">
+          無
+        </div>
         <div class="table-title" v-else>
           <div
             class="tablevue"
@@ -172,11 +197,10 @@
             {{ item }},
           </div>
         </div>
-        
       </div>
       <div class="table">
         <div class="table-title">疾病名稱</div>
-        <div class="tablevue" v-if="diseaseName.length==`0`">無</div>
+        <div class="tablevue" v-if="diseaseName.length == `0`">無</div>
         <div class="table-title" v-else>
           <div class="tablevue" v-for="(item, key) in diseaseName" :key="key">
             {{ item }},
@@ -185,7 +209,7 @@
       </div>
       <div class="tableA">
         <div class="table-title">疾病部位</div>
-        <div class="tablevue" v-if="diseaseLocation.length==`0`">無</div>
+        <div class="tablevue" v-if="diseaseLocation.length == `0`">無</div>
         <div class="table-title" v-else>
           <div
             class="tablevue"
@@ -196,7 +220,6 @@
           </div>
         </div>
       </div>
-      
     </div>
   </div>
 
@@ -345,6 +368,9 @@ html {
 /* .d-input {
   visibility: hidden;
 } */
+.d{
+  background-color: #65a2b5;
+}
 
 #left_kidney_size:hover {
   background-color: #fad190;
@@ -549,15 +575,17 @@ export default {
       diseaseName: [],
       diseaseLocation: [],
       renalCystMorphProgression: [],
-      leftKidneySize:[],
-      rightKidneySize:[],
-      graftKidneySize:[],
+      leftKidneySize: [],
+      rightKidneySize: [],
+      graftKidneySize: [],
       size: [],
       isLoading: false,
       color: "#038686",
       backgroundColor: "#D8D8D8",
       loader: "dots",
-      text:{}
+      text: {},
+      img: `精準健康研究中心-亞洲大學
+          精準健康研究中心-亞洲大學精準健康研究中心-亞洲大學 <mark data-entity="org" class="d">精準健康研究中心-亞洲大學</mark>`,
     };
   },
   mounted() {
@@ -566,7 +594,7 @@ export default {
     this.$http
       .get(`${dataUrl}`)
       .then((res) => {
-        this.text=res.data.text.text
+        this.text = res.data.text.text;
         console.log("res.data", res.data);
         this.result = res.data.result;
         //取每項資料
@@ -574,66 +602,50 @@ export default {
         for (var i = 0; i < Total; i++) {
           if (res.data.result[i].tag == "renal_cyst_size") {
             //腎水泡大小
-            this.renalCystSize.push(
-              res.data.result[i].word
-            );
+            this.renalCystSize.push(res.data.result[i].word);
           }
           if (res.data.result[i].tag == "renal_cyst_mention") {
             //腎水泡名稱
-            this.renalCystMention.push(
-              res.data.result[i].word
-            );
+            this.renalCystMention.push(res.data.result[i].word);
           }
           if (res.data.result[i].tag == "renal_cyst_amount") {
             //腎水泡數量
-            this.renalCystAmount.push(
-              res.data.result[i].word
-            );
+            this.renalCystAmount.push(res.data.result[i].word);
           }
           if (res.data.result[i].tag == "renal_cyst_location") {
             //腎水泡部位
-            this.renalCystLocation.push(
-              res.data.result[i].word
-            );
+            this.renalCystLocation.push(res.data.result[i].word);
           }
           if (res.data.result[i].tag == "disease_name") {
             //疾病名稱
-            this.diseaseName.push(
-              res.data.result[i].word
-            );
+            this.diseaseName.push(res.data.result[i].word);
           }
           if (res.data.result[i].tag == "disease_location") {
             //疾病部位
-            this.diseaseLocation.push(
-              res.data.result[i].word
-            );
+            this.diseaseLocation.push(res.data.result[i].word);
           }
           if (res.data.result[i].tag == "renal_cyst_morph_progression") {
             //腎水泡特徵
-            this.renalCystMorphProgression.push(
-              res.data.result[i].word
-            );
-          }if (res.data.result[i].tag == "left_kidney_size") {
+            this.renalCystMorphProgression.push(res.data.result[i].word);
+          }
+          if (res.data.result[i].tag == "left_kidney_size") {
             //左腎大小
-            this.leftKidneySize.push(
-              res.data.result[i].word
-            );
-          } if (res.data.result[i].tag == "right_kidney_size") {
+            this.leftKidneySize.push(res.data.result[i].word);
+            // `this.text=this.text.slice(0,res.data.result[i].start)+`<mark style="background:#f99;">`+this.text.slice(res.data.result[i].start,res.data.result[i].end)+`</mark>`+this.text.slice(res.data.result[i].end)`
+          }
+          if (res.data.result[i].tag == "right_kidney_size") {
             //右腎大小
-            this.rightKidneySize.push(
-              res.data.result[i].word
-            );
-          }if (res.data.result[i].tag == "graft_kidney_size") {
+            this.rightKidneySize.push(res.data.result[i].word);
+          }
+          if (res.data.result[i].tag == "graft_kidney_size") {
             //人工腎臟大小
-            this.graftKidneySize.push(
-              res.data.result[i].word
-            );
+            this.graftKidneySize.push(res.data.result[i].word);
           }
           // if (res.data.result[i].tag == "right_kidney_size") {
           //   //右腎大小
           //   this.rightKidneySize.push(
           //     this.id.substring(
-          //       //取右腎大小 
+          //       //取右腎大小
           //       res.data.result[i].start,
           //       res.data.result[i].end
           //     )
