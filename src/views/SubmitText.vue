@@ -12,8 +12,8 @@
     <div class="A">
       <div class="results-text" id="show" style="overflow-y: auto">
         <!-- <p class="results">{{ text }}</p> -->
-        <!-- <p class="results" v-html="text"></p> -->
-        <p class="results" v-html="img"></p>
+        <p class="results" v-html="text"></p>
+        <!-- <p class="results" v-html="img"></p> -->
       </div>
       <!--標籤-->
       <div class="label-area" id="labelArea">
@@ -599,55 +599,106 @@ export default {
         this.result = res.data.result;
         //取每項資料
         var Total = res.data.result.length;
-        for (var i = 0; i < Total; i++) {
-          if (res.data.result[i].tag == "renal_cyst_size") {
+        for (var j = 0; j < Total; j++) {
+          if (res.data.result[j].tag == "renal_cyst_size") {
             //腎水泡大小
-            this.renalCystSize.push(res.data.result[i].word);
+            this.renalCystSize.push(res.data.result[j].word);
+            //上色
+            const e= res.data.result[j].end-res.data.result[j].start
+            console.log(this.text.search(res.data.result[j].word))
+            this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#b8b8ff;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+e)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+e)
+            console.log(this.text.search(res.data.result[j].word))
           }
-          if (res.data.result[i].tag == "renal_cyst_mention") {
+          if (res.data.result[j].tag == "renal_cyst_mention") {
             //腎水泡名稱
-            this.renalCystMention.push(res.data.result[i].word);
+            this.renalCystMention.push(res.data.result[j].word);
+            //上色
+            const d= res.data.result[j].end-res.data.result[j].start
+            console.log(this.text.search(res.data.result[j].word))
+            this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#abffab;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+d)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+d)
+            console.log(this.text.search(res.data.result[j].word))
           }
-          if (res.data.result[i].tag == "renal_cyst_amount") {
+          if (res.data.result[j].tag == "renal_cyst_amount") {
             //腎水泡數量
-            this.renalCystAmount.push(res.data.result[i].word);
+            this.renalCystAmount.push(res.data.result[j].word);
+            //上色
+            // const l= res.data.result[j].end-res.data.result[j].start
+            // console.log(this.text.search(res.data.result[j].word))
+            // this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#8cffff;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+l)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+l)
+            // console.log(this.text.search(res.data.result[j].word))
           }
-          if (res.data.result[i].tag == "renal_cyst_location") {
+          if (res.data.result[j].tag == "renal_cyst_location") {
             //腎水泡部位
-            this.renalCystLocation.push(res.data.result[i].word);
+            this.renalCystLocation.push(res.data.result[j].word);
+            //上色
+            const f= res.data.result[j].end-res.data.result[j].start
+            console.log(this.text.search(res.data.result[j].word))
+            this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#ff96ff;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+f)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+f)
+            console.log(this.text.search(res.data.result[j].word))
           }
-          if (res.data.result[i].tag == "disease_name") {
+          if (res.data.result[j].tag == "disease_name") {
             //疾病名稱
-            this.diseaseName.push(res.data.result[i].word);
+            this.diseaseName.push(res.data.result[j].word);
+            //上色
+            // const k= res.data.result[j].end-res.data.result[j].start
+            // console.log(this.text.search(res.data.result[j].word))
+            // this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#9c9c9c;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+k)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+k)
+            // console.log(this.text.search(res.data.result[j].word))
           }
-          if (res.data.result[i].tag == "disease_location") {
+          if (res.data.result[j].tag == "disease_location") {
             //疾病部位
-            this.diseaseLocation.push(res.data.result[i].word);
+            this.diseaseLocation.push(res.data.result[j].word);
+            //上色
+            const h= res.data.result[j].end-res.data.result[j].start
+            console.log(this.text.search(res.data.result[j].word))
+            this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#9e0000;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+h)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+h)
+            console.log(this.text.search(res.data.result[j].word))
           }
-          if (res.data.result[i].tag == "renal_cyst_morph_progression") {
+          if (res.data.result[j].tag == "renal_cyst_morph_progression") {
             //腎水泡特徵
-            this.renalCystMorphProgression.push(res.data.result[i].word);
+            this.renalCystMorphProgression.push(res.data.result[j].word);
+            //上色
+            const g= res.data.result[j].end-res.data.result[j].start
+            console.log(this.text.search(res.data.result[j].word))
+            this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#ca82ff;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+g)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+g)
+            console.log(this.text.search(res.data.result[j].word))
           }
-          if (res.data.result[i].tag == "left_kidney_size") {
+          if (res.data.result[j].tag == "left_kidney_size") {
             //左腎大小
-            this.leftKidneySize.push(res.data.result[i].word);
-            // `this.text=this.text.slice(0,res.data.result[i].start)+`<mark style="background:#f99;">`+this.text.slice(res.data.result[i].start,res.data.result[i].end)+`</mark>`+this.text.slice(res.data.result[i].end)`
+            this.leftKidneySize.push(res.data.result[j].word);
+            //上色
+            const a= res.data.result[j].end-res.data.result[j].start
+            console.log(a)
+            console.log(this.text.search(res.data.result[j].word))
+            this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#fad190;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+a)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+a)
+            console.log(this.text.search(res.data.result[j].word))
           }
-          if (res.data.result[i].tag == "right_kidney_size") {
+          if (res.data.result[j].tag == "right_kidney_size") {
             //右腎大小
-            this.rightKidneySize.push(res.data.result[i].word);
+            this.rightKidneySize.push(res.data.result[j].word);
+            //上色
+            const b= res.data.result[j].end-res.data.result[j].start
+            console.log(b)
+            console.log(this.text.search(res.data.result[j].word))
+            this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#ffbfbf;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+b)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+b)
+            console.log(this.text.search(res.data.result[j].word))
           }
-          if (res.data.result[i].tag == "graft_kidney_size") {
+          if (res.data.result[j].tag == "graft_kidney_size") {
             //人工腎臟大小
-            this.graftKidneySize.push(res.data.result[i].word);
+            this.graftKidneySize.push(res.data.result[j].word);
+            //上色
+            const c= res.data.result[j].end-res.data.result[j].start
+            console.log(this.text.search(res.data.result[j].word))
+            this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#ffff96;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+c)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+c)
+            console.log(this.text.search(res.data.result[j].word))
           }
-          // if (res.data.result[i].tag == "right_kidney_size") {
+          // if (res.data.result[j].tag == "right_kidney_size") {
           //   //右腎大小
           //   this.rightKidneySize.push(
           //     this.id.substring(
           //       //取右腎大小
-          //       res.data.result[i].start,
-          //       res.data.result[i].end
+          //       res.data.result[j].start,
+          //       res.data.result[j].end
           //     )
           //   );
           // }
