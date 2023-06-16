@@ -6,7 +6,7 @@
         <thead>
           <tr>
             <th scope="col" width="220">#</th>
-            <th scope="col" width="650">名稱</th>
+            <th scope="col" width="650">檔案名稱</th>
             <th scope="col" width="0"></th>
           </tr>
         </thead>

@@ -124,7 +124,9 @@ export default {
       fileName: [],
       formData: new FormData(),
       resdata: {},
-      datatext:{}
+      datatext:{},
+      allData:[],
+      resAllData:{},
     };
   },
   methods: {
@@ -148,8 +150,15 @@ export default {
         .post(`http://iasl.asia.edu.tw:8082/upload/`, this.formData)
         .then((res) => {
           console.log("up", res.data.result);
-          this.datatext = { ...res.data.result };
-          console.log("datatext", res.data.result[0]);
+          this.datatext = res.data.result ;
+          var Total = this.fileName.length;
+          for (var j = 0; j < Total; j++) {
+            const q =  this.fileName[j]
+            this.allData.push(res.data.result[q].text)
+            console.log(this.allData)
+          }
+          this.resAllData=JSON.stringify(this.allData)
+          console.log(this.resAllData)
         })
         .catch((err) => {
           console.log(err);

@@ -789,7 +789,7 @@ export default {
             //上色
             const b = res.data.result[j].end - res.data.result[j].start;
             this.text =
-              this.text.slice(0, this.text.search(res.data.result[j].word)+34) +`<mark style="background:#ffbfbf;">` +res.data.result[j].word+`</mark>` +
+              this.text.slice(0, this.text.search(res.data.result[j].word)) +`<mark style="background:#ffbfbf;">` +res.data.result[j].word+`</mark>` +
               this.text.slice(this.text.search(res.data.result[j].word) + b);
           }
           if (res.data.result[j].tag == "graft_kidney_size") {
