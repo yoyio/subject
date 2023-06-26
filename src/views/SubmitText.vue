@@ -46,7 +46,7 @@
             @click="graft_kidney_size()"
           />
           <span id="graft_kidney_size" :class="graftKidneySizeClass"
-            >人工腎臟大小</span
+            >移植腎大小</span
           >
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
@@ -163,7 +163,7 @@
         </div>
       </div>
       <div class="table">
-        <div class="table-title">人工腎臟大小</div>
+        <div class="table-title">移植腎大小</div>
         <div class="tablevue" v-if="graftKidneySize.length == `0`">無</div>
         <div class="table-title" v-else>
           <div
@@ -647,7 +647,7 @@ export default {
   },
   mounted() {
     this.isLoading = true;
-    const dataUrl = `https://iasl.asia.edu.tw:8082/api?text=12345678`;//https://iasl.asia.edu.tw:8082/api?text=${this.id}
+    const dataUrl = `https://iasl.asia.edu.tw:8082/api?text=${this.id}`;//https://iasl.asia.edu.tw:8082/api?text=${this.id}
     this.$http
       .get(`${dataUrl}`)
       .then((res) => {
@@ -796,7 +796,7 @@ export default {
             //標籤顏色
             this.graftKidneySizeCheck = true;
             this.graftKidneySizeClass = "d-input__graft_kidney_size";
-            //人工腎臟大小
+            //移植腎大小
             this.graftKidneySize.push(res.data.result[j].word);
             //上色
             const c = res.data.result[j].end - res.data.result[j].start;
@@ -867,7 +867,7 @@ export default {
       }
     },
     graft_kidney_size() {
-      //人工腎臟大小
+      //移植腎大小
       var Total = this.result.length;
       for (var j = 0; j < Total; j++) {
         if (this.result[j].tag == "graft_kidney_size") {
