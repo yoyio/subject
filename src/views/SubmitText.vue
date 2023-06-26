@@ -647,7 +647,7 @@ export default {
   },
   mounted() {
     this.isLoading = true;
-    const dataUrl = `https://iasl.asia.edu.tw:8082/api?text=${this.id}`;//https://iasl.asia.edu.tw:8082/api?text=${this.id} //https://iasl.asia.edu.tw:8082/api?text=12345678
+    const dataUrl = `https://iasl.asia.edu.tw:8082/api?text=12345678`;//https://iasl.asia.edu.tw:8082/api?text=${this.id}
     this.$http
       .get(`${dataUrl}`)
       .then((res) => {
