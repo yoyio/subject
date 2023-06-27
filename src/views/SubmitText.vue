@@ -647,9 +647,7 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$route.query.id)
     this.id=this.$route.query.id
-    console.log("id",this.$route.query.id)
     this.isLoading = true;
     const dataUrl = `https://iasl.asia.edu.tw:8082/api?text=${this.id}`;//https://iasl.asia.edu.tw:8082/api?text=${this.id}
     this.$http

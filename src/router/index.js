@@ -29,13 +29,21 @@ const routes = [
     name: 'fileTable',
     component: () => import('../views/FileTable.vue'),
     props: (route) => ({
-      query: route.query
+      query: route.query.id
     })
   },
+  // {
+  //   path: '/submitFile/:id',
+  //   name: 'submitFile',
+  //   component: () => import('../views/SubmitFile.vue')
+  // },
   {
-    path: '/submitFile/:id',
+    path: '/submitFile',
     name: 'submitFile',
-    component: () => import('../views/SubmitFile.vue')
+    component: () => import('../views/SubmitFile.vue'),
+    props: (route) => ({
+      query: route.query.id
+    })
   },
   {
     path: '/textTool',
