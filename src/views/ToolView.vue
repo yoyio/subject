@@ -42,7 +42,7 @@ incomplete bladder study"
           <!-- <input class="action" type="button" id="button1" value="驗證" onclick="verify()"></input> -->
           <div class="bottom" style="margin-top: 20px">
             <RouterLink
-              :to="`/submitText/${text}`"
+              :to="`/submitText?id=${text}`"
               class="action"
               style="width: 20%; text-align: center"
               >送出</RouterLink
@@ -147,7 +147,7 @@ export default {
     },
     postfile() {
       this.$http
-        .post(`http://iasl.asia.edu.tw:8082/upload/`, this.formData)
+        .post(`https://iasl.asia.edu.tw:8082/upload/`, this.formData)
         .then((res) => {
           console.log("up", res.data.result);
           this.datatext = res.data.result ;

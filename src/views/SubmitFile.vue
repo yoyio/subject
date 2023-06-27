@@ -596,7 +596,7 @@ Impression: 1. Compared wtih ADPKD (mother with ADPKD) and polycystic liver.
   },
   mounted() {
     this.isLoading = true;
-    const dataUrl = `http://iasl.asia.edu.tw:8082/api?text=${this.id}
+    const dataUrl = `https://iasl.asia.edu.tw:8082/api?text=${this.id}
 `;
     this.$http
       .get(`${dataUrl}`)

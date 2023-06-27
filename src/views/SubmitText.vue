@@ -596,7 +596,7 @@ import "vue-loading-overlay/dist/css/index.css";
 
 export default {
   props: {
-    id: {
+    query: {
       type: String,
     },
   },
@@ -611,6 +611,7 @@ export default {
       backgroundColor: "#D8D8D8",
       loader: "dots",
       //API
+      id:{},
       result: {},
       text: {},
       renalCystSize: [],
@@ -646,6 +647,9 @@ export default {
     };
   },
   mounted() {
+    console.log(this.$route.query.id)
+    this.id=this.$route.query.id
+    console.log("id",this.$route.query.id)
     this.isLoading = true;
     const dataUrl = `https://iasl.asia.edu.tw:8082/api?text=${this.id}`;//https://iasl.asia.edu.tw:8082/api?text=${this.id}
     this.$http
@@ -700,8 +704,8 @@ export default {
             //腎水泡數量
             this.renalCystAmount.push(res.data.result[j].word);
             //上色
-            // const l= res.data.result[j].end-res.data.result[j].start
-            // this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#8cffff;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+l)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+l)
+            const l= res.data.result[j].end-res.data.result[j].start
+            this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#8cffff;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+l)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+l)
           }
           if (res.data.result[j].tag == "renal_cyst_location") {
             //標籤顏色
@@ -728,8 +732,8 @@ export default {
             //疾病名稱
             this.diseaseName.push(res.data.result[j].word);
             //上色
-            // const k= res.data.result[j].end-res.data.result[j].start
-            // this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#9c9c9c;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+k)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+k)
+            const k= res.data.result[j].end-res.data.result[j].start
+            this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#9c9c9c;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+k)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+k)
           }
           if (res.data.result[j].tag == "disease_location") {
             //標籤顏色

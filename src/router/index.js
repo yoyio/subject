@@ -17,10 +17,12 @@ const routes = [
     component: () => import('../views/AboutView.vue')
   },
   {
-    path: '/submitText/:id',
+    path: '/submitText',
     name: 'submitText',
     component: () => import('../views/SubmitText.vue'),
-    props: true
+    props: (route) => ({
+      query: route.query.id
+    })
   },
   {
     path: '/fileTable',
