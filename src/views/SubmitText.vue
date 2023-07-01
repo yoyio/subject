@@ -686,14 +686,9 @@ export default {
             //上色
             const d = res.data.result[j].end - res.data.result[j].start;
             this.text =
-              this.text.slice(0, this.text.search(res.data.result[j].word)) +
-              `<mark style="background:#abffab;">` +
-              this.text.slice(
-                this.text.search(res.data.result[j].word),
-                this.text.search(res.data.result[j].word) + d
-              ) +
-              `</mark>` +
-              this.text.slice(this.text.search(res.data.result[j].word) + d);
+              this.text.slice(0, this.text.indexOf(res.data.result[j].word,res.data.result[j].start+45)) +
+              `<mark style="background:#abffab;">` +res.data.result[j].word+`</mark>` +
+              this.text.slice(this.text.indexOf(res.data.result[j].word,res.data.result[j].start+45) + d);
           }
           if (res.data.result[j].tag == "renal_cyst_amount") {
             //標籤顏色
@@ -791,8 +786,8 @@ export default {
             //上色
             const b = res.data.result[j].end - res.data.result[j].start;
             this.text =
-              this.text.slice(0, this.text.search(res.data.result[j].word)) +`<mark style="background:#ffbfbf;">` +res.data.result[j].word+`</mark>` +
-              this.text.slice(this.text.search(res.data.result[j].word) + b);
+              this.text.slice(0, this.text.lastIndexOf(res.data.result[j].word)) +`<mark style="background:#ffbfbf;">` +res.data.result[j].word+`</mark>` +
+              this.text.slice(this.text.lastIndexOf(res.data.result[j].word) + b);
           }
           if (res.data.result[j].tag == "graft_kidney_size") {
             //標籤顏色
@@ -851,10 +846,10 @@ export default {
         if (this.result[j].tag == "right_kidney_size") {
           if (this.rightKidneySizeClass == "d-input__right_kidney_size") {
             const rks = this.text.search(`<mark style="background:#ffbfbf;">`);
-            const rksz = this.text.search(this.result[j].word);
+            const rksz = this.text.lastIndexOf(this.result[j].word);
             this.text = this.text.slice(0, rks) + this.text.slice(rksz);
           } else {
-            const rksz = this.text.search(this.result[j].word);
+            const rksz = this.text.lastIndexOf(this.result[j].word);
             this.text =
               this.text.slice(0, rksz) +
               `<mark style="background:#ffbfbf;">` +
@@ -898,9 +893,10 @@ export default {
       for (var j = 0; j < Total; j++) {
         if (this.result[j].tag == "renal_cyst_mention") {
           if (this.renalCystMentionClass === "d-input__renal_cyst_mention") {
-            const rks = this.text.search(`<mark style="background:#abffab;">`);
-            const rksz = this.text.search(this.result[j].word);
-            this.text = this.text.slice(0, rks) + this.text.slice(rksz);
+            console.log(this.text.indexOf(`<mark style="background:#abffab;">`))
+            const rks = this.text.indexOf(`<mark style="background:#abffab;">`);
+            const rksz = this.text.indexOf(this.result[j].word);
+            this.text = this.text.slice(0, rks)+this.text.slice(rksz);
           } else {
             const rksz = this.text.search(this.result[j].word);
             this.text =
