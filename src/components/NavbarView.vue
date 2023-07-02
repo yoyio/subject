@@ -17,9 +17,9 @@
         <li class="nav-item">
           <RouterLink to="/about" class="nav-link">關於我們</RouterLink>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <RouterLink to="/textTool" class="nav-link">textTool</RouterLink>
-        </li>
+        </li> -->
       </ul>
     </nav>
   </header>
