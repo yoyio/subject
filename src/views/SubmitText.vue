@@ -46,7 +46,7 @@
             @click="graft_kidney_size()"
           />
           <span id="graft_kidney_size" :class="graftKidneySizeClass"
-            >人工腎臟大小</span
+            >移植腎大小</span
           >
         </label>
         <label style="margin-right: 0%; padding: 1px 8px">
@@ -163,7 +163,7 @@
         </div>
       </div>
       <div class="table">
-        <div class="table-title">人工腎臟大小</div>
+        <div class="table-title">移植腎大小</div>
         <div class="tablevue" v-if="graftKidneySize.length == `0`">無</div>
         <div class="table-title" v-else>
           <div
@@ -596,7 +596,7 @@ import "vue-loading-overlay/dist/css/index.css";
 
 export default {
   props: {
-    id: {
+    query: {
       type: String,
     },
   },
@@ -611,6 +611,7 @@ export default {
       backgroundColor: "#D8D8D8",
       loader: "dots",
       //API
+      id:{},
       result: {},
       text: {},
       renalCystSize: [],
@@ -646,8 +647,9 @@ export default {
     };
   },
   mounted() {
+    this.id=this.$route.query.id
     this.isLoading = true;
-    const dataUrl = `https://iasl.asia.edu.tw:8082/api?text=12345678`;
+    const dataUrl = `https://iasl.asia.edu.tw:8082/api?text=${this.id}`;//https://iasl.asia.edu.tw:8082/api?text=${this.id}
     this.$http
       .get(`${dataUrl}`)
       .then((res) => {
@@ -684,14 +686,9 @@ export default {
             //上色
             const d = res.data.result[j].end - res.data.result[j].start;
             this.text =
-              this.text.slice(0, this.text.search(res.data.result[j].word)) +
-              `<mark style="background:#abffab;">` +
-              this.text.slice(
-                this.text.search(res.data.result[j].word),
-                this.text.search(res.data.result[j].word) + d
-              ) +
-              `</mark>` +
-              this.text.slice(this.text.search(res.data.result[j].word) + d);
+              this.text.slice(0, this.text.indexOf(res.data.result[j].word,res.data.result[j].start+45)) +
+              `<mark style="background:#abffab;">` +res.data.result[j].word+`</mark>` +
+              this.text.slice(this.text.indexOf(res.data.result[j].word,res.data.result[j].start+45) + d);
           }
           if (res.data.result[j].tag == "renal_cyst_amount") {
             //標籤顏色
@@ -700,8 +697,8 @@ export default {
             //腎水泡數量
             this.renalCystAmount.push(res.data.result[j].word);
             //上色
-            // const l= res.data.result[j].end-res.data.result[j].start
-            // this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#8cffff;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+l)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+l)
+            const l= res.data.result[j].end-res.data.result[j].start
+            this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#8cffff;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+l)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+l)
           }
           if (res.data.result[j].tag == "renal_cyst_location") {
             //標籤顏色
@@ -728,8 +725,8 @@ export default {
             //疾病名稱
             this.diseaseName.push(res.data.result[j].word);
             //上色
-            // const k= res.data.result[j].end-res.data.result[j].start
-            // this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#9c9c9c;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+k)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+k)
+            const k= res.data.result[j].end-res.data.result[j].start
+            this.text=this.text.slice(0,this.text.search(res.data.result[j].word))+`<mark style="background:#9c9c9c;">`+this.text.slice(this.text.search(res.data.result[j].word),this.text.search(res.data.result[j].word)+k)+`</mark>`+this.text.slice(this.text.search(res.data.result[j].word)+k)
           }
           if (res.data.result[j].tag == "disease_location") {
             //標籤顏色
@@ -789,14 +786,14 @@ export default {
             //上色
             const b = res.data.result[j].end - res.data.result[j].start;
             this.text =
-              this.text.slice(0, this.text.search(res.data.result[j].word)) +`<mark style="background:#ffbfbf;">` +res.data.result[j].word+`</mark>` +
-              this.text.slice(this.text.search(res.data.result[j].word) + b);
+              this.text.slice(0, this.text.lastIndexOf(res.data.result[j].word)) +`<mark style="background:#ffbfbf;">` +res.data.result[j].word+`</mark>` +
+              this.text.slice(this.text.lastIndexOf(res.data.result[j].word) + b);
           }
           if (res.data.result[j].tag == "graft_kidney_size") {
             //標籤顏色
             this.graftKidneySizeCheck = true;
             this.graftKidneySizeClass = "d-input__graft_kidney_size";
-            //人工腎臟大小
+            //移植腎大小
             this.graftKidneySize.push(res.data.result[j].word);
             //上色
             const c = res.data.result[j].end - res.data.result[j].start;
@@ -849,10 +846,10 @@ export default {
         if (this.result[j].tag == "right_kidney_size") {
           if (this.rightKidneySizeClass == "d-input__right_kidney_size") {
             const rks = this.text.search(`<mark style="background:#ffbfbf;">`);
-            const rksz = this.text.search(this.result[j].word);
+            const rksz = this.text.lastIndexOf(this.result[j].word);
             this.text = this.text.slice(0, rks) + this.text.slice(rksz);
           } else {
-            const rksz = this.text.search(this.result[j].word);
+            const rksz = this.text.lastIndexOf(this.result[j].word);
             this.text =
               this.text.slice(0, rksz) +
               `<mark style="background:#ffbfbf;">` +
@@ -867,7 +864,7 @@ export default {
       }
     },
     graft_kidney_size() {
-      //人工腎臟大小
+      //移植腎大小
       var Total = this.result.length;
       for (var j = 0; j < Total; j++) {
         if (this.result[j].tag == "graft_kidney_size") {
@@ -896,9 +893,10 @@ export default {
       for (var j = 0; j < Total; j++) {
         if (this.result[j].tag == "renal_cyst_mention") {
           if (this.renalCystMentionClass === "d-input__renal_cyst_mention") {
-            const rks = this.text.search(`<mark style="background:#abffab;">`);
-            const rksz = this.text.search(this.result[j].word);
-            this.text = this.text.slice(0, rks) + this.text.slice(rksz);
+            console.log(this.text.indexOf(`<mark style="background:#abffab;">`))
+            const rks = this.text.indexOf(`<mark style="background:#abffab;">`);
+            const rksz = this.text.indexOf(this.result[j].word);
+            this.text = this.text.slice(0, rks)+this.text.slice(rksz);
           } else {
             const rksz = this.text.search(this.result[j].word);
             this.text =

@@ -17,23 +17,33 @@ const routes = [
     component: () => import('../views/AboutView.vue')
   },
   {
-    path: '/submitText/:id',
+    path: '/submitText',
     name: 'submitText',
     component: () => import('../views/SubmitText.vue'),
-    props: true
+    props: (route) => ({
+      query: route.query.id
+    })
   },
   {
     path: '/fileTable',
     name: 'fileTable',
     component: () => import('../views/FileTable.vue'),
     props: (route) => ({
-      query: route.query
+      query: route.query.id
     })
   },
+  // {
+  //   path: '/submitFile/:id',
+  //   name: 'submitFile',
+  //   component: () => import('../views/SubmitFile.vue')
+  // },
   {
-    path: '/submitFile/:id',
+    path: '/submitFile',
     name: 'submitFile',
-    component: () => import('../views/SubmitFile.vue')
+    component: () => import('../views/SubmitFile.vue'),
+    props: (route) => ({
+      query: route.query.id
+    })
   },
   {
     path: '/textTool',

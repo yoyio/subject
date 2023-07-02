@@ -19,7 +19,7 @@
             <th scope="row">{{ key+1 }}</th>
             <td>{{ item }}</td>
             <td>
-              <RouterLink :to="`/submitFile/${item.id}`" class="sel"
+              <RouterLink :to="`/submitFile?id=${tr[key]}&name=${ key+1}`" class="sel"
                 >查看</RouterLink
               >
             </td>
@@ -190,7 +190,6 @@ html {
 </style>
 
 <script>
-
 export default {
   props: {
     query: {
@@ -204,13 +203,13 @@ export default {
       results: {},
       result: {},
       ulid: "",
+      tr:{}
     };
   },
   mounted(){
     console.log(this.$route.query)
-    console.log(this.$route.query.id)
-    console.log(JSON.parse(this.$route.query.id))
     this.daname=JSON.parse(this.$route.query.id)
+    this.tr=JSON.parse(this.$route.query.name)
   }
 };
 </script>

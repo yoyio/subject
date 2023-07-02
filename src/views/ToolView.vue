@@ -1,4 +1,12 @@
 <template>
+  <loading
+    v-model:active="isLoading"
+    :can-cancel="false"
+    :color="color"
+    :background-color="backgroundColor"
+    :loader="loader"
+    :is-full-page="true"
+  />
   <!--tool-->
   <div class="container">
     <!-- TEXT -->
@@ -42,7 +50,7 @@ incomplete bladder study"
           <!-- <input class="action" type="button" id="button1" value="驗證" onclick="verify()"></input> -->
           <div class="bottom" style="margin-top: 20px">
             <RouterLink
-              :to="`/submitText/${text}`"
+              :to="`/submitText?id=${text}`"
               class="action"
               style="width: 20%; text-align: center"
               >送出</RouterLink
@@ -89,10 +97,9 @@ incomplete bladder study"
           />
           <div class="bottom" style="margin-top: 10px">
             <RouterLink
-              :to="`/fileTable?id=${resdata}`"
+              :to="`/fileTable?id=${resdata}&name=${resAllData}`"
               class="action"
               style="width: 20%; text-align: center"
-              @click.prevent="postfile()"
               >送出</RouterLink
             >
             <div
@@ -117,9 +124,18 @@ incomplete bladder study"
 </template>
 
 <script>
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
+
 export default {
   data() {
     return {
+      //Loading
+      isLoading: false,
+      color: "#038686",
+      backgroundColor: "#D8D8D8",
+      loader: "dots",
+      //API
       text: "",
       fileName: [],
       formData: new FormData(),
@@ -129,6 +145,9 @@ export default {
       resAllData:{},
     };
   },
+  components: {
+    Loading,
+  },
   methods: {
     deltext() {
       this.text = "";
@@ -137,6 +156,7 @@ export default {
       e.value = "";
     },
     fileChange(e) {
+      this.isLoading = true;
       for (var i = 0; i < e.target.files.length; i++) {
         const uploadedFile = this.$refs.files.files[i];
         this.fileName.push(uploadedFile.name)
@@ -144,10 +164,8 @@ export default {
       }
       console.log(this.fileName);
       this.resdata=JSON.stringify(this.fileName)
-    },
-    postfile() {
       this.$http
-        .post(`http://iasl.asia.edu.tw:8082/upload/`, this.formData)
+        .post(`https://iasl.asia.edu.tw:8082/upload/`, this.formData)
         .then((res) => {
           console.log("up", res.data.result);
           this.datatext = res.data.result ;
@@ -159,11 +177,13 @@ export default {
           }
           this.resAllData=JSON.stringify(this.allData)
           console.log(this.resAllData)
+          this.isLoading = false;
         })
         .catch((err) => {
           console.log(err);
         });
-    },
+      
+    }
   },
 };
 </script>
