@@ -798,8 +798,7 @@ export default {
             //上色
             const c = res.data.result[j].end - res.data.result[j].start;
             this.text =
-              this.text.slice(0, this.text.search(res.data.result[j].word)) +
-              `<mark style="background:#ffff96;">` +
+              this.text.slice(0, this.text.search(res.data.result[j].word)) +`<mark style="background:#ffff96;">` +
               this.text.slice(
                 this.text.search(res.data.result[j].word),
                 this.text.search(res.data.result[j].word) + c
