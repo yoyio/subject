@@ -331,6 +331,7 @@ html {
 /* 設定區塊寬度一致並置中 */
 .container {
   width: 80%;
+  height: 100%;
   margin: 0 auto 3rem auto;
 }
 
